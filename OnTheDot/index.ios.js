@@ -15,7 +15,22 @@ import React, {
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
+class Board extends Component {
+
+  render() {
+    return (
+      <View>
+        This is a board
+      </View>
+    );
+  }
+}
+
 class OnTheDot extends Component {
+  constructor() {
+    super();
+    this.state = {prop: 'a prop'};
+  }
 
   fetchData() {
     fetch(REQUEST_URL + POST_NEW_GAME, {
@@ -35,21 +50,13 @@ class OnTheDot extends Component {
   render() {
 
     return (
-      <TouchableHighlight onPress={this.fetchData()}>
       <View style={styles.container}>
-
-        <Text style={styles.welcome}>
-
-        </Text>
-        <Text style={styles.instructions}>
-
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TouchableHighlight onPress={this.fetchData, console.log("OnTheDot state", this.state)}>
+          <Text style={styles.welcome}>
+            Post a new Game
+          </Text>
+        </TouchableHighlight>
       </View>
-      </TouchableHighlight>
     );
   }
 }

@@ -116,7 +116,7 @@ class BoardEntry extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'},
-        body: JSON.stringify({player: "Sasha"})
+        body: JSON.stringify({player: 'Game-' + Math.round(1e6 * Math.random())})
       })
     .then((response) => response.json())
     .then((responseData) => {

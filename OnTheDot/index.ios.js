@@ -19,10 +19,47 @@ var POST_NEW_GAME = '/games'
 
 
 class MainPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2,
+        loaded: false
+      })
+    };
+  }
+
+  componentDidMount() {
+    this.getWaitingGames();
+  }
+
+  getWaitingGames() {
+    fetch(REQUEST_URL + '/games/waiting')
+      .then((response) => response.json())
+      .then((responseData) => {
+        var gameObjects = responseData.map(function(game) {
+          return {player1: game[0], created_at: game[1]}
+        })
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(gameObjects),
+          loaded: true
+        });
+      }).done();
+  }
+
   swap() {
     this.props.navigator.replace({
       id: 'Board'
     });
+  }
+
+  renderGame(game) {
+    console.log(game);
+    return (
+      <View>
+        <Text>{game.player1}</Text>
+      </View>
+    );
   }
 
   render() {
@@ -32,6 +69,9 @@ class MainPage extends Component {
         <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text>Goto Board</Text>
         </TouchableHighlight>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderGame}/>
       </View>
     );
   }

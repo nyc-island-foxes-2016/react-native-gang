@@ -49,7 +49,7 @@ class MainPage extends Component {
 
   swap() {
     this.props.navigator.replace({
-      id: 'Board'
+      id: 'BoardEntry'
     });
   }
 
@@ -64,7 +64,7 @@ class MainPage extends Component {
 
   render() {
     return(
-      <View style={styles.container}>
+      <View>
         <Text>Main page here</Text>
         <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text>Goto Board</Text>
@@ -77,7 +77,7 @@ class MainPage extends Component {
   }
 }
 
-class Board extends Component {
+class BoardEntry extends Component {
   swap() {
     this.props.navigator.replace({
       id: 'MainPage'
@@ -101,9 +101,9 @@ class Board extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Text>This is a board</Text>
-        <TouchableHighlight onPress={this.swap.bind(this)}>
+        <TouchableHighlight onPress={this.postNewGame, this.swap.bind(this)}>
           <Text>Post your board!</Text>
         </TouchableHighlight>
       </View>
@@ -120,9 +120,9 @@ class OnTheDot extends Component {
         <MainPage navigator={navigator}/>
       );
     }
-    else if(routeId === 'Board') {
+    else if(routeId === 'BoardEntry') {
       return (
-        <Board navigator={navigator}/>
+        <BoardEntry navigator={navigator}/>
       );
     }
   }

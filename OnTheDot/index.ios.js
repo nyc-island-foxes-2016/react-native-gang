@@ -88,8 +88,10 @@ class MainPage extends Component {
 
   render() {
     return(
-      <View>
-        <Text>Main page here</Text>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Main page here
+          </Text>
         <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text>Goto Board</Text>
         </TouchableHighlight>
@@ -114,29 +116,30 @@ class BoardEntry extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'},
-      body: JSON.stringify({player1: "Sasha"})
-    }).then((response)=> response.json()).then((responseData) => {
-    AlertIOS.alert(
-        "POST Response",
-        "Response Body -> " + JSON.stringify(responseData.body)
-    )});
+        body: JSON.stringify({player: "Sasha"})
+      })
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.swap();
+    });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is a board</Text>
-        <TouchableHighlight onPress={this.postNewGame, this.swap.bind(this)}>
-          <Text>Post your board!</Text>
+        <View style={styles.row}>
+          <Dot/>
+          <Dot/>
+        </View>
+        <View style={styles.row}>
+          <Dot/>
+          <Dot/>
+        </View>
+        <TouchableHighlight onPress={this.postNewGame.bind(this)}>
+          <Text style={styles.welcome}>
+            Post your board!
+          </Text>
         </TouchableHighlight>
-        <View style={styles.row}>
-          <Dot/>
-          <Dot/>
-        </View>
-        <View style={styles.row}>
-          <Dot/>
-          <Dot/>
-        </View>
       </View>
     );
   }
@@ -182,7 +185,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 40,
     textAlign: 'center',
     margin: 10,
     padding: 10
@@ -196,7 +199,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     margin: 60,
-    borderRadius: 60,
+    borderRadius: 30,
     backgroundColor: '#CBA'
   },
   row: {

@@ -6,6 +6,7 @@
 import React, {
   AppRegistry,
   Component,
+  NavigatorIOS,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -16,23 +17,7 @@ var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
 class Board extends Component {
-
-  render() {
-    return (
-      <View>
-        This is a board
-      </View>
-    );
-  }
-}
-
-class OnTheDot extends Component {
-  constructor() {
-    super();
-    this.state = {prop: 'a prop'};
-  }
-
-  fetchData() {
+  postNewGame() {
     fetch(REQUEST_URL + POST_NEW_GAME, {
       method: "POST",
       headers: {
@@ -48,16 +33,43 @@ class OnTheDot extends Component {
   }
 
   render() {
-
     return (
-      <View style={styles.container}>
-        <TouchableHighlight onPress={this.fetchData, console.log("OnTheDot state", this.state)}>
-          <Text style={styles.welcome}>
-            Post a new Game
-          </Text>
-        </TouchableHighlight>
+      <View>
+        This is a board
       </View>
+      <TouchableHighlight onPress={this.postNewGame}>
+        Post your board
+      </TouchableHighlight>
     );
+  }
+}
+
+class OnTheDot extends Component {
+  constructor() {
+    super();
+    this.state = {page: 'main'};
+  }
+
+  render() {
+
+    if(this.state.page === 'main') {
+      return (
+        <View style={styles.container}>
+          <TouchableHighlight onPress={this.state.page = 'board'}>
+            <Text style={styles.welcome}>
+              Post a new Game
+            </Text>
+          </TouchableHighlight>
+        </View>
+      );
+    }
+    else {
+      return (
+        <View>
+          <Board/>
+        </View>
+      )
+    }
   }
 }
 
@@ -72,6 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    padding: 10
   },
   instructions: {
     textAlign: 'center',

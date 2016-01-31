@@ -18,10 +18,29 @@ var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
 class Dot extends Component {
+  constructor() {
+    super();
+    this.state = {clicked: false};
+  }
+
+  dotColor() {
+    if(this.props.clicked === true) {
+      return styles.clickedDot;
+    }
+    return styles.unclickedDot;
+  }
+
+  clickDot() {
+    this.state = {clicked: true};
+  }
+
   render() {
     return (
-      <View style={styles.dot}>
-      </View>
+      <TouchableHighlight
+        onPress={this.clickDot.bind(this)}>
+        <View style={[styles.dot, this.dotColor()]}>
+        </View>
+      </TouchableHighlight>
     );
   }
 }
@@ -128,12 +147,12 @@ class BoardEntry extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.row}>
-          <Dot/>
-          <Dot/>
+          <Dot key={'A'}/>
+          <Dot key={'B'}/>
         </View>
         <View style={styles.row}>
-          <Dot/>
-          <Dot/>
+          <Dot key={'C'}/>
+          <Dot key={'D'}/>
         </View>
         <TouchableHighlight onPress={this.postNewGame.bind(this)}>
           <Text style={styles.welcome}>
@@ -200,7 +219,18 @@ const styles = StyleSheet.create({
     width: 60,
     margin: 60,
     borderRadius: 30,
-    backgroundColor: '#CBA'
+  },
+  clickedDot: {
+    backgroundColor: '#CBA',
+    borderColor: '#654',
+    borderStyle: 'solid',
+    borderWidth: 4
+  },
+  unclickedDot: {
+    backgroundColor: '#ABC',
+    borderColor: '#456',
+    borderStyle: 'solid',
+    borderWidth: 4
   },
   row: {
     flex: 1,

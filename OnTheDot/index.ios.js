@@ -6,7 +6,7 @@
 import React, {
   AppRegistry,
   Component,
-  NavigatorIOS,
+  Navigator,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -15,6 +15,23 @@ import React, {
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
+
+class MainPage extends Component {
+  swap() {
+    this.props.navigator.replace({
+      id: 'Board'
+    })
+  }
+
+  render() {
+    return(
+      <Text>Main page here</Text>
+      <View>
+        <TouchableHighlight style={styles.dot} onPress={this.swap.bind(this)}/>
+      </View>
+    );
+  }
+}
 
 class Board extends Component {
   postNewGame() {
@@ -35,7 +52,7 @@ class Board extends Component {
   render() {
     return (
       <View>
-        This is a board
+        <Text>This is a board</Text>
       </View>
       <TouchableHighlight onPress={this.postNewGame}>
         Post your board
@@ -52,24 +69,20 @@ class OnTheDot extends Component {
 
   render() {
 
-    if(this.state.page === 'main') {
-      return (
-        <View style={styles.container}>
-          <TouchableHighlight onPress={this.state.page = 'board'}>
-            <Text style={styles.welcome}>
-              Post a new Game
-            </Text>
-          </TouchableHighlight>
-        </View>
-      );
-    }
-    else {
-      return (
-        <View>
-          <Board/>
-        </View>
-      )
-    }
+    return (
+      <View style={styles.container}>
+        <Navigator
+          initialRoute={{id: 'MainPage', name: 'Index'}}
+          renderScene={this.renderScene.bind(this)}
+          configureScene={(route) => {
+            if(route.sceneConfig) {
+              return route.sceneConfig;
+            }
+            return Navigator.SceneConfigs.VerticalDownSwipeJump;
+          }
+        }/>
+      </View>
+    );
   }
 }
 

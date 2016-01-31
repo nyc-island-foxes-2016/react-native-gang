@@ -6,6 +6,7 @@
 import React, {
   AppRegistry,
   Component,
+  ListView,
   Navigator,
   StyleSheet,
   Text,
@@ -16,18 +17,19 @@ import React, {
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
+
 class MainPage extends Component {
   swap() {
     this.props.navigator.replace({
       id: 'Board'
-    })
+    });
   }
 
   render() {
     return(
-      <Text>Main page here</Text>
-      <View>
-        <TouchableHighlight style={styles.dot} onPress={this.swap.bind(this)}>
+      <View style={styles.container}>
+        <Text>Main page here</Text>
+        <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text>Goto Board</Text>
         </TouchableHighlight>
       </View>
@@ -39,7 +41,7 @@ class Board extends Component {
   swap() {
     this.props.navigator.replace({
       id: 'MainPage'
-    })
+    });
   }
 
   postNewGame() {
@@ -59,37 +61,44 @@ class Board extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>This is a board</Text>
+        <TouchableHighlight onPress={this.swap.bind(this)}>
+          <Text>Post your board!</Text>
+        </TouchableHighlight>
       </View>
-      <TouchableHighlight onPress={this.swap.bind(this)}>
-        <Text>Post your board!</Text>
-      </TouchableHighlight>
     );
   }
 }
 
 class OnTheDot extends Component {
-  constructor() {
-    super();
-    this.state = {page: 'main'};
+
+  renderScene(route, navigator) {
+    var routeId = route.id;
+    if(routeId === 'MainPage') {
+      return (
+        <MainPage navigator={navigator}/>
+      );
+    }
+    else if(routeId === 'Board') {
+      return (
+        <Board navigator={navigator}/>
+      );
+    }
   }
 
   render() {
-
     return (
-      <View style={styles.container}>
-        <Navigator
-          initialRoute={{id: 'MainPage', name: 'Index'}}
-          renderScene={this.renderScene.bind(this)}
-          configureScene={(route) => {
-            if(route.sceneConfig) {
-              return route.sceneConfig;
-            }
-            return Navigator.SceneConfigs.VerticalDownSwipeJump;
+      <Navigator
+        initialRoute={{id: 'MainPage', name: 'Index'}}
+        renderScene={this.renderScene.bind(this)}
+        configureScene={(route) => {
+          if(route.sceneConfig) {
+            return route.sceneConfig;
           }
-        }/>
-      </View>
+          return Navigator.SceneConfigs.VerticalDownSwipeJump;
+        }
+      }/>
     );
   }
 }

@@ -17,6 +17,31 @@ import React, {
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
+class Dot extends Component {
+  render() {
+    return (
+      <View style={styles.dot}>
+      </View>
+    );
+  }
+}
+
+class Board {
+  grid: Array<Array<number>>;
+
+  constructor() {
+    var size = 2;
+    var grid = Array(size);
+    for (var y = 0; y < size; y++) {
+      var row = Array(size);
+      for (var x = 0; x < size; x++) {
+        row[y] = 0;
+      }
+      grid[y] = row;
+    }
+    this.grid = grid;
+  }
+}
 
 class MainPage extends Component {
   constructor(props) {
@@ -38,7 +63,7 @@ class MainPage extends Component {
       .then((response) => response.json())
       .then((responseData) => {
         var gameObjects = responseData.map(function(game) {
-          return {player1: game[0], created_at: game[1]}
+          return {player1: game[0], created_at: game[1]};
         })
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(gameObjects),
@@ -54,7 +79,6 @@ class MainPage extends Component {
   }
 
   renderGame(game) {
-    console.log(game);
     return (
       <View>
         <Text>{game.player1}</Text>
@@ -92,7 +116,6 @@ class BoardEntry extends Component {
         'Content-Type': 'application/json'},
       body: JSON.stringify({player1: "Sasha"})
     }).then((response)=> response.json()).then((responseData) => {
-    console.log(responseData);
     AlertIOS.alert(
         "POST Response",
         "Response Body -> " + JSON.stringify(responseData.body)
@@ -101,11 +124,19 @@ class BoardEntry extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>This is a board</Text>
         <TouchableHighlight onPress={this.postNewGame, this.swap.bind(this)}>
           <Text>Post your board!</Text>
         </TouchableHighlight>
+        <View style={styles.row}>
+          <Dot/>
+          <Dot/>
+        </View>
+        <View style={styles.row}>
+          <Dot/>
+          <Dot/>
+        </View>
       </View>
     );
   }
@@ -161,6 +192,19 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  dot: {
+    height: 60,
+    width: 60,
+    margin: 60,
+    borderRadius: 60,
+    backgroundColor: '#CBA'
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 AppRegistry.registerComponent('OnTheDot', () => OnTheDot);

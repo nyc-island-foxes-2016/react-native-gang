@@ -27,13 +27,21 @@ class MainPage extends Component {
     return(
       <Text>Main page here</Text>
       <View>
-        <TouchableHighlight style={styles.dot} onPress={this.swap.bind(this)}/>
+        <TouchableHighlight style={styles.dot} onPress={this.swap.bind(this)}>
+          <Text>Goto Board</Text>
+        </TouchableHighlight>
       </View>
     );
   }
 }
 
 class Board extends Component {
+  swap() {
+    this.props.navigator.replace({
+      id: 'MainPage'
+    })
+  }
+
   postNewGame() {
     fetch(REQUEST_URL + POST_NEW_GAME, {
       method: "POST",
@@ -54,8 +62,8 @@ class Board extends Component {
       <View>
         <Text>This is a board</Text>
       </View>
-      <TouchableHighlight onPress={this.postNewGame}>
-        Post your board
+      <TouchableHighlight onPress={this.swap.bind(this)}>
+        <Text>Post your board!</Text>
       </TouchableHighlight>
     );
   }

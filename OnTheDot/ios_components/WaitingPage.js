@@ -20,9 +20,9 @@ class WelcomePage extends Component {
     super(props);
   }
 
-  swap() {
+  swap(page_name) {
     this.props.navigator.replace({
-      id: 'MainPage'
+      id: page_name
     });
   }
 
@@ -34,9 +34,8 @@ class WelcomePage extends Component {
     fetch(REQUEST_URL + GET_CURRENT_GAME + this.props.gameId + GET_IF_JOINED)
       .then((response) => response.json())
       .then((responseText) => {
-        console.log(responseText);
         if(responseText.result === "Yes"){
-          this.swap();
+          this.swap('MainPage'); /////make this the game page!!!
         }
         else {
           setTimeout(() => {
@@ -46,14 +45,32 @@ class WelcomePage extends Component {
       });
     }
 
+  deleteGame() {
+    fetch(REQUEST_URL + GET_CURRENT_GAME + this.props.gameId, {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'}
+    }).then((response) => response.json())
+      .then((responseText) => {
+        if(responseText.result === "Yes"){
+          this.swap('MainPage');
+        }
+      });
+  }
 
   render() {
 
     return (
       <View style={styles.container}>
-        <Text>
+        <Text style = {styles.welcome}>
           Waiting....
         </Text>
+      <TouchableHighlight onPress = {this.deleteGame.bind(this)}>
+        <Text>
+          Go back to start!
+        </Text>
+      </TouchableHighlight>
       </View>
       );
     }

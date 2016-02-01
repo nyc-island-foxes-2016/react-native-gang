@@ -24,8 +24,16 @@ class GameView extends Component {
     });
   }
 
-  attemptPath() {
+  attemptPath(row: number, col: number, letter: char) {
+
     var update_url = REQUEST_URL + POST_NEW_GAME + '/' + this.props.gameId + '/attempt';
+
+    var attemptLetterPath = this.state.letterPath + letter
+
+    this.setState({
+      board: this.state.board,
+      letterPath: attemptLetterPath
+    })
 
     fetch(update_url, {
       method: "POST",
@@ -40,20 +48,15 @@ class GameView extends Component {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      this.swap();
-    });
-  }
-
-  handleDotClick(row: number, col: number, letter: char) {
-    if(this.state.board.isClicked(row, col)) {
-      return;
-    }
-
-    var letterPath = this.state.letterPath;
-
-    this.setState({
-      board: this.state.board.mark(row, col),
-      letterPath: letterPath + letter
+      if(responseData.result === 'No'){
+        this.setState({
+          board: this.state.board,
+          letterPath: ''
+        })
+      }
+      else if(this.state.letterPath.length === 4) {
+        this.swap();
+      }
     });
   }
 
@@ -66,7 +69,7 @@ class GameView extends Component {
           <Dot
             key={col}
             clicked={clicked}
-            onPress={this.handleDotClick.bind(this, row, col, letterSet.pop())}/>
+            onPress={this.attemptPath.bind(this, row, col, letterSet.pop())}/>
         )}
       </View>
     );

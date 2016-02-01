@@ -29,6 +29,7 @@ class OnTheDot extends Component {
   renderScene(route, navigator) {
     var routeId = route.id;
     var gameId = route.gameId;
+    var player = route.player;
     if(routeId === 'MainPage') {
       return (
         <MainPage navigator={navigator}/>
@@ -56,7 +57,8 @@ class OnTheDot extends Component {
       return (
         <GameView
           navigator={navigator}
-          gameId={gameId}/>
+          gameId={gameId}
+          player={player}/>
       );
     }
   }

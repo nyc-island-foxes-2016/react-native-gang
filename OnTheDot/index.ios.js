@@ -50,7 +50,7 @@ class Board {
     for (var y = 0; y < size; y++) {
       var row = Array(size);
       for (var x = 0; x < size; x++) {
-        row[x] = {clicked: 0};
+        row[x] = 0;
       }
       grid[y] = row;
     }
@@ -174,10 +174,10 @@ class BoardEntry extends Component {
 
     var rows = this.state.board.grid.map((dots, row) =>
       <View key={row} style={styles.row}>
-        {dots.map((dotVal, col) =>
+        {dots.map((clicked, col) =>
           <Dot
             key={col}
-            clicked={dotVal.clicked}
+            clicked={clicked}
             onPress={this.handleDotClick.bind(this, row, col, letterSet.pop())}/>
         )}
       </View>

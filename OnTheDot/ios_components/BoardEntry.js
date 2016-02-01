@@ -21,9 +21,10 @@ class BoardEntry extends Component {
     this.state = {board: new Board(), letterPath: ''};
   }
 
-  swap() {
+  swap(gameId) {
     this.props.navigator.replace({
-      id: 'WaitingPage'
+      id: 'WaitingPage',
+      gameId: gameId
     });
   }
 
@@ -40,7 +41,7 @@ class BoardEntry extends Component {
       })
     .then((response) => response.json())
     .then((responseData) => {
-      this.swap();
+      this.swap(responseData.id);
     });
   }
 

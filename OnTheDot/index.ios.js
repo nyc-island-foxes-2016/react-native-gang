@@ -18,6 +18,7 @@ import BoardEntry from './ios_components/BoardEntry';
 import Dot from './ios_components/Dot';
 import JoinGame from './ios_components/JoinGame';
 import MainPage from './ios_components/MainPage';
+import WaitingPage from './ios_components/WaitingPage';
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
@@ -43,10 +44,12 @@ class OnTheDot extends Component {
           navigator={navigator}
           gameId={gameId}/>
       );
-
+    }
     else if(routeId === 'WaitingPage'){
       return (
-        <WaitingPage navigator={navigator}/>
+        <WaitingPage
+        navigator={navigator}
+        gameId = {gameId}/>
         );
     }
   }

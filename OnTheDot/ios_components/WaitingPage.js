@@ -10,34 +10,54 @@ import React, {
 } from 'react-native';
 
 var REQUEST_URL = 'http://localhost:3000'
-//var POST_NEW_GAME = '/games'
-//post to check for a player 2 - use swap to go to empty board to play (doesnt exist yet)
+var GET_CURRENT_GAME = '/games/'
+var GET_IF_JOINED = '/joined'
+
 //destroy route to close game board and return to home - use swap to change nav to main page
 
 class WelcomePage extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
   }
 
+  swap() {
+    this.props.navigator.replace({
+      id: 'MainPage'
+    });
+  }
 
+  componentDidMount() {
+    this.getPlayer2Joined();
+  }
+
+  getPlayer2Joined() {
+    fetch(REQUEST_URL + GET_CURRENT_GAME + this.props.gameId + GET_IF_JOINED)
+      .then((response) => response.json())
+      .then((responseText) => {
+        console.log(responseText);
+        if(responseText.result === "Yes"){
+          this.swap();
+        }
+        else {
+          setTimeout(() => {
+            this.getPlayer2Joined();
+            }, 500);
+        }
+      });
+    }
 
 
   render() {
+
     return (
-      <View>
-      //view for waiting page
+      <View style={styles.container}>
+        <Text>
+          Waiting....
+        </Text>
       </View>
       );
+    }
   }
-
-
-
-
-
-
-
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -59,5 +79,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = MainPage;
-
+module.exports = WelcomePage;

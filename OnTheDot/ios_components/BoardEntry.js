@@ -41,7 +41,8 @@ class BoardEntry extends Component {
       })
     .then((response) => response.json())
     .then((responseData) => {
-      this.swap(responseData.id);
+      console.log('responseData', responseData);
+      this.swap(responseData.gameId);
     });
   }
 

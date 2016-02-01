@@ -53,6 +53,7 @@ class OnTheDot extends Component {
         navigator={navigator}
         gameId = {gameId}/>
         );
+    }
     else if(routeId === 'GameView') {
       return (
         <GameView

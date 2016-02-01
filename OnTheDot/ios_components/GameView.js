@@ -34,7 +34,7 @@ class GameView extends Component {
         'Content-Type': 'application/json'},
       body: JSON.stringify({
         id: this.props.gameId,
-        player: null,
+        player: this.props.player,
         board: this.state.letterPath
       })
     })
@@ -76,9 +76,9 @@ class GameView extends Component {
         <View>
           {rows}
         </View>
-        <TouchableHighlight onPress={this.setupPlayerTwo.bind(this)}>
+        <TouchableHighlight onPress={this.attemptPath.bind(this)}>
           <Text style={styles.welcome}>
-            Start the Game!
+            {this.props.player}
           </Text>
         </TouchableHighlight>
       </View>

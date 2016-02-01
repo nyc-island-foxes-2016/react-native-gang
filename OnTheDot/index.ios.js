@@ -13,10 +13,10 @@ import React, {
   TouchableHighlight,
   View
 } from 'react-native';
-import Board from './Board';
-import BoardEntry from './BoardEntry';
-import Dot from './Dot';
-import MainPage from './MainPage';
+import Board from './ios_components/Board';
+import BoardEntry from './ios_components/BoardEntry';
+import Dot from './ios_components/Dot';
+import MainPage from './ios_components/MainPage';
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'

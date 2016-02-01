@@ -21,7 +21,9 @@ class JoinGame extends Component {
 
   swap() {
     this.props.navigator.replace({
-      id: 'MainPage'
+      id: 'GameView',
+      gameId: this.state.gameId,
+      player: this.state.player
     });
   }
 
@@ -41,6 +43,10 @@ class JoinGame extends Component {
     })
     .then((response) => response.json())
     .then((responseData) => {
+      this.setState({
+        player: responseData.player,
+        gameId: responseData.gameId
+      });
       this.swap();
     });
   }

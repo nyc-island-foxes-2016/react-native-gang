@@ -76,7 +76,7 @@ class GameView extends Component {
         <View>
           {rows}
         </View>
-        <TouchableHighlight onPress={this.attemptPath.bind(this)}>
+        <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text style={styles.welcome}>
             {this.props.player}
           </Text>

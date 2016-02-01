@@ -52,19 +52,23 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     margin: 60,
-    borderRadius: 30,
+    borderRadius: 30
   },
   clickedDot: {
-    backgroundColor: '#DA8',
-    borderColor: '#642',
+    backgroundColor: '#D43',
+    borderColor: '#E54',
     borderStyle: 'solid',
-    borderWidth: 4
+    borderWidth: 4,
+    borderLeftWidth: 0,
+    borderTopWidth: 0
   },
   unclickedDot: {
-    backgroundColor: '#ABC',
-    borderColor: '#456',
+    backgroundColor: '#ABE',
+    borderColor: '#BCF',
     borderStyle: 'solid',
-    borderWidth: 4
+    borderWidth: 4,
+    borderLeftWidth: 0,
+    borderTopWidth: 0
   },
   row: {
     flexDirection: 'row',

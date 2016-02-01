@@ -32,7 +32,7 @@ class MainPage extends Component {
       .then((response) => response.json())
       .then((responseData) => {
         var gameObjects = responseData.map(function(game) {
-          return {player1: game[0], created_at: game[1]};
+          return {id: game[0], player1: game[1], created_at: game[2]};
         })
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(gameObjects),
@@ -42,15 +42,24 @@ class MainPage extends Component {
   }
 
   swap() {
+      this.props.navigator.replace({
+        id: 'BoardEntry'
+      });
+  }
+
+  goToJoinGame(game) {
     this.props.navigator.replace({
-      id: 'BoardEntry'
+      id: 'JoinGame',
+      gameId: game.id
     });
   }
 
   renderGame(game) {
     return (
       <View>
-        <Text>{game.player1} {game.board1}</Text>
+        <TouchableHighlight onPress={this.goToJoinGame.bind(this, game)}>
+          <Text>{game.player1} {game.created_at} {game.id}</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -66,7 +75,7 @@ class MainPage extends Component {
         </TouchableHighlight>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={this.renderGame}/>
+          renderRow={this.renderGame.bind(this)}/>
       </View>
     );
   }

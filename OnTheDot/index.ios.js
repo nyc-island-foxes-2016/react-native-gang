@@ -11,6 +11,7 @@ import React, {
   StyleSheet,
   Text,
   TouchableHighlight,
+  Spinner,
   View
 } from 'react-native';
 import Board from './ios_components/Board';

@@ -23,7 +23,7 @@ class BoardEntry extends Component {
 
   swap() {
     this.props.navigator.replace({
-      id: 'MainPage'
+      id: 'WaitingPage'
     });
   }
 

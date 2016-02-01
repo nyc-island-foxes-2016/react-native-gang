@@ -1,64 +1,76 @@
 'use strict';
-
 import React, {
   Component,
-  ListView,
-  Navigator,
-  StyleSheet,
   Text,
+  StyleSheet,
   TouchableHighlight,
   View
 } from 'react-native';
 import Board from './Board';
-import Dot from './Dot';
+import Dot from './Dot'
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
-class BoardEntry extends Component {
+class GameView extends Component {
   constructor(props) {
     super(props);
     this.state = {board: new Board(), letterPath: ''};
   }
 
-  swap(gameId) {
+  swap() {
     this.props.navigator.replace({
-      id: 'WaitingPage',
-      gameId: gameId,
-      player: this.state.player
+      id: 'MainPage'
     });
   }
 
-  postNewGame() {
-    fetch(REQUEST_URL + POST_NEW_GAME, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          player: 'Game-' + Math.round(1e6 * Math.random()),
-          board: this.state.letterPath
-        })
-      })
-    .then((response) => response.json())
-    .then((responseData) => {
-      this.setState({
-        player: responseData.player
-      })
-      this.swap(responseData.gameId);
-    });
-  }
-
-  handleDotClick(row: number, col: number, letter: char) {
+  clickDot(row: number, col: number) {
     if(this.state.board.isClicked(row, col)) {
       return;
     }
 
-    var letterPath = this.state.letterPath;
-
     this.setState({
       board: this.state.board.mark(row, col),
-      letterPath: letterPath + letter
+      letterPath: this.state.letterPath
+    });
+  }
+
+  attemptPath(row: number, col: number, letter: char) {
+
+    var update_url = REQUEST_URL + POST_NEW_GAME + '/' + this.props.gameId + '/attempt';
+
+    var attemptLetterPath = this.state.letterPath + letter
+
+    this.setState({
+      board: this.state.board,
+      letterPath: attemptLetterPath
+    })
+
+    fetch(update_url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.props.gameId,
+        player: this.props.player,
+        board: this.state.letterPath
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      if(responseData.result === 'No'){
+        this.setState({
+          board: new Board(),
+          letterPath: ''
+        })
+      }
+      else if(this.state.letterPath.length === 4) {
+        this.swap();
+      }
+      else {
+        this.clickDot(row, col);
+      }
     });
   }
 
@@ -71,7 +83,7 @@ class BoardEntry extends Component {
           <Dot
             key={col}
             clicked={clicked}
-            onPress={this.handleDotClick.bind(this, row, col, letterSet.pop())}/>
+            onPress={this.attemptPath.bind(this, row, col, letterSet.pop())}/>
         )}
       </View>
     );
@@ -81,14 +93,15 @@ class BoardEntry extends Component {
         <View>
           {rows}
         </View>
-        <TouchableHighlight onPress={this.postNewGame.bind(this)}>
+        <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text style={styles.welcome}>
-            Post your board!
+            {this.props.player}
           </Text>
         </TouchableHighlight>
       </View>
     );
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -134,4 +147,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = BoardEntry;
+module.exports = GameView;

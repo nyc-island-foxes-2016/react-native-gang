@@ -21,7 +21,9 @@ class JoinGame extends Component {
 
   swap() {
     this.props.navigator.replace({
-      id: 'MainPage'
+      id: 'GameView',
+      gameId: this.state.gameId,
+      player: this.state.player
     });
   }
 
@@ -41,6 +43,10 @@ class JoinGame extends Component {
     })
     .then((response) => response.json())
     .then((responseData) => {
+      this.setState({
+        player: responseData.player,
+        gameId: responseData.gameId
+      });
       this.swap();
     });
   }
@@ -111,18 +117,18 @@ const styles = StyleSheet.create({
     width: 60,
     margin: 60,
     borderRadius: 30,
+    borderStyle: 'solid',
+    borderWidth: 4,
+    borderLeftWidth: 0,
+    borderTopWidth: 0
   },
   clickedDot: {
-    backgroundColor: '#DA8',
-    borderColor: '#642',
-    borderStyle: 'solid',
-    borderWidth: 4
+    backgroundColor: '#D43',
+    borderColor: '#E54'
   },
   unclickedDot: {
-    backgroundColor: '#ABC',
-    borderColor: '#456',
-    borderStyle: 'solid',
-    borderWidth: 4
+    backgroundColor: '#BBC',
+    borderColor: '#CCD'
   },
   row: {
     flexDirection: 'row',

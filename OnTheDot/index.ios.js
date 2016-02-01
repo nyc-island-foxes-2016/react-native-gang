@@ -16,6 +16,7 @@ import React, {
 import Board from './ios_components/Board';
 import BoardEntry from './ios_components/BoardEntry';
 import Dot from './ios_components/Dot';
+import GameView from './ios_components/GameView';
 import JoinGame from './ios_components/JoinGame';
 import MainPage from './ios_components/MainPage';
 import WaitingPage from './ios_components/WaitingPage';
@@ -28,6 +29,7 @@ class OnTheDot extends Component {
   renderScene(route, navigator) {
     var routeId = route.id;
     var gameId = route.gameId;
+    var player = route.player;
     if(routeId === 'MainPage') {
       return (
         <MainPage navigator={navigator}/>
@@ -49,8 +51,17 @@ class OnTheDot extends Component {
       return (
         <WaitingPage
         navigator={navigator}
-        gameId = {gameId}/>
+        gameId = {gameId}
+        player = {player}/>
         );
+    }
+    else if(routeId === 'GameView') {
+      return (
+        <GameView
+          navigator={navigator}
+          gameId={gameId}
+          player={player}/>
+      );
     }
   }
 

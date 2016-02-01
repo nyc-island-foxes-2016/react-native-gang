@@ -15,21 +15,19 @@ var GET_IF_JOINED = '/joined'
 
 //destroy route to close game board and return to home - use swap to change nav to main page
 
-class WaitingPage extends Component {
+class WelcomePage extends Component {
   constructor(props) {
     super(props);
   }
 
   swap(page_name) {
     this.props.navigator.replace({
-      id: 'GameView',
-      gameId: this.props.gameId,
-      player: this.props.player
+      id: page_name
     });
   }
 
   componentDidMount() {
-    this.getPlayer2Joined().bind(this);
+    this.getPlayer2Joined();
   }
 
   getPlayer2Joined() {
@@ -98,4 +96,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = WaitingPage;
+module.exports = WelcomePage;

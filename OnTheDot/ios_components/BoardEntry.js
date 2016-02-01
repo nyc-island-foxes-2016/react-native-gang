@@ -110,18 +110,18 @@ const styles = StyleSheet.create({
     width: 60,
     margin: 60,
     borderRadius: 30,
+    borderStyle: 'solid',
+    borderWidth: 4,
+    borderLeftWidth: 0,
+    borderTopWidth: 0
   },
   clickedDot: {
-    backgroundColor: '#DA8',
-    borderColor: '#642',
-    borderStyle: 'solid',
-    borderWidth: 4
+    backgroundColor: '#D43',
+    borderColor: '#E54'
   },
   unclickedDot: {
-    backgroundColor: '#ABC',
-    borderColor: '#456',
-    borderStyle: 'solid',
-    borderWidth: 4
+    backgroundColor: '#BBC',
+    borderColor: '#CCD'
   },
   row: {
     flexDirection: 'row',

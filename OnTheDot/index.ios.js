@@ -105,7 +105,7 @@ class MainPage extends Component {
   renderGame(game) {
     return (
       <View>
-        <Text>{game.player1}</Text>
+        <Text>{game.player1} {game.board1}</Text>
       </View>
     );
   }
@@ -147,7 +147,7 @@ class BoardEntry extends Component {
         'Content-Type': 'application/json'},
         body: JSON.stringify({
           player: 'Game-' + Math.round(1e6 * Math.random()),
-          board: null
+          board: this.state.letterPath
         })
       })
     .then((response) => response.json())

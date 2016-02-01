@@ -16,6 +16,7 @@ import React, {
 import Board from './ios_components/Board';
 import BoardEntry from './ios_components/BoardEntry';
 import Dot from './ios_components/Dot';
+import JoinGame from './ios_components/JoinGame';
 import MainPage from './ios_components/MainPage';
 
 var REQUEST_URL = 'http://localhost:3000'
@@ -33,6 +34,11 @@ class OnTheDot extends Component {
     else if(routeId === 'BoardEntry') {
       return (
         <BoardEntry navigator={navigator}/>
+      );
+    }
+    else if(routeId === 'JoinGame') {
+      return(
+        <JoinGame navigator={navigator}/>
       );
     }
   }

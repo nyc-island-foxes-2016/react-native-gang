@@ -47,16 +47,17 @@ class MainPage extends Component {
       });
   }
 
-  goToJoinGame() {
+  goToJoinGame(game) {
     this.props.navigator.replace({
-      id: 'JoinGame'
+      id: 'JoinGame',
+      gameId: game.id
     });
   }
 
   renderGame(game) {
     return (
       <View>
-        <TouchableHighlight onPress={this.goToJoinGame.bind(this)}>
+        <TouchableHighlight onPress={this.goToJoinGame.bind(this, game)}>
           <Text>{game.player1} {game.created_at} {game.id}</Text>
         </TouchableHighlight>
       </View>

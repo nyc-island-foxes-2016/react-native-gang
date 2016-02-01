@@ -50,7 +50,7 @@ class Board {
     for (var y = 0; y < size; y++) {
       var row = Array(size);
       for (var x = 0; x < size; x++) {
-        row[x] = 0;
+        row[x] = {clicked: 0};
       }
       grid[y] = row;
     }
@@ -130,7 +130,7 @@ class MainPage extends Component {
 class BoardEntry extends Component {
   constructor(props) {
     super(props);
-    this.state = {board: new Board()};
+    this.state = {board: new Board(), letterPath: ''};
   }
 
   swap() {
@@ -145,7 +145,10 @@ class BoardEntry extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'},
-        body: JSON.stringify({player: 'Game-' + Math.round(1e6 * Math.random())})
+        body: JSON.stringify({
+          player: 'Game-' + Math.round(1e6 * Math.random()),
+          board: null
+        })
       })
     .then((response) => response.json())
     .then((responseData) => {
@@ -153,31 +156,32 @@ class BoardEntry extends Component {
     });
   }
 
-  handleDotClick(row: number, col: number) {
-    console.log('Row:', row, 'Col:', col);
+  handleDotClick(row: number, col: number, letter: char) {
     if(this.state.board.isClicked(row, col)) {
       return;
     }
 
+    var letterPath = this.state.letterPath;
+
     this.setState({
-      board: this.state.board.mark(row, col)
+      board: this.state.board.mark(row, col),
+      letterPath: letterPath + letter
     });
   }
 
   render() {
+    var letterSet = ['D', 'C', 'B', 'A'];
+
     var rows = this.state.board.grid.map((dots, row) =>
       <View key={row} style={styles.row}>
-        {dots.map((clicked, col) =>
+        {dots.map((dotVal, col) =>
           <Dot
             key={col}
-            clicked={clicked}
-            onPress={this.handleDotClick.bind(this, row, col)}/>
+            clicked={dotVal.clicked}
+            onPress={this.handleDotClick.bind(this, row, col, letterSet.pop())}/>
         )}
       </View>
     );
-
-    console.log('Grid:', this.state.board.grid);
-    console.log('Rows', rows);
 
     return (
       <View style={styles.container}>

@@ -43,6 +43,11 @@ class OnTheDot extends Component {
           navigator={navigator}
           gameId={gameId}/>
       );
+
+    else if(routeId === 'WaitingPage'){
+      return (
+        <WaitingPage navigator={navigator}/>
+        );
     }
   }
 

@@ -24,6 +24,17 @@ class GameView extends Component {
     });
   }
 
+  clickDot(row: number, col: number) {
+    if(this.state.board.isClicked(row, col)) {
+      return;
+    }
+
+    this.setState({
+      board: this.state.board.mark(row, col),
+      letterPath: this.state.letterPath
+    });
+  }
+
   attemptPath(row: number, col: number, letter: char) {
 
     var update_url = REQUEST_URL + POST_NEW_GAME + '/' + this.props.gameId + '/attempt';
@@ -50,12 +61,15 @@ class GameView extends Component {
     .then((responseData) => {
       if(responseData.result === 'No'){
         this.setState({
-          board: this.state.board,
+          board: new Board(),
           letterPath: ''
         })
       }
       else if(this.state.letterPath.length === 4) {
         this.swap();
+      }
+      else {
+        this.clickDot(row, col);
       }
     });
   }
@@ -113,18 +127,18 @@ const styles = StyleSheet.create({
     width: 60,
     margin: 60,
     borderRadius: 30,
+    borderStyle: 'solid',
+    borderWidth: 4,
+    borderLeftWidth: 0,
+    borderTopWidth: 0
   },
   clickedDot: {
-    backgroundColor: '#DA8',
-    borderColor: '#642',
-    borderStyle: 'solid',
-    borderWidth: 4
+    backgroundColor: '#D43',
+    borderColor: '#E54'
   },
   unclickedDot: {
-    backgroundColor: '#ABC',
-    borderColor: '#456',
-    borderStyle: 'solid',
-    borderWidth: 4
+    backgroundColor: '#BBC',
+    borderColor: '#CCD'
   },
   row: {
     flexDirection: 'row',

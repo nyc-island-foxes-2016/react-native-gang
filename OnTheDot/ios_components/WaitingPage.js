@@ -22,7 +22,9 @@ class WaitingPage extends Component {
 
   swap(page_name) {
     this.props.navigator.replace({
-      id: page_name
+      id: 'GameView',
+      gameId: this.props.gameId,
+      player: this.props.player
     });
   }
 
@@ -31,7 +33,6 @@ class WaitingPage extends Component {
   }
 
   getPlayer2Joined() {
-    console.log("Making a request...", this.props);
     fetch(REQUEST_URL + GET_CURRENT_GAME + this.props.gameId + GET_IF_JOINED)
       .then((response) => response.json())
       .then((responseText) => {

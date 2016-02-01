@@ -37,7 +37,7 @@ class WaitingPage extends Component {
       .then((response) => response.json())
       .then((responseText) => {
         if(responseText.result === "Yes"){
-          this.swap('MainPage'); /////make this the game page!!!
+          this.swap('GameView');
         }
         else {
           setTimeout(() => {

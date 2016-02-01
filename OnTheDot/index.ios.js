@@ -16,6 +16,7 @@ import React, {
 import Board from './ios_components/Board';
 import BoardEntry from './ios_components/BoardEntry';
 import Dot from './ios_components/Dot';
+import GameView from './ios_components/GameView';
 import JoinGame from './ios_components/JoinGame';
 import MainPage from './ios_components/MainPage';
 import WaitingPage from './ios_components/WaitingPage';
@@ -51,6 +52,12 @@ class OnTheDot extends Component {
         navigator={navigator}
         gameId = {gameId}/>
         );
+    else if(routeId === 'GameView') {
+      return (
+        <GameView
+          navigator={navigator}
+          gameId={gameId}/>
+      );
     }
   }
 

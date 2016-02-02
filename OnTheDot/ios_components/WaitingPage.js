@@ -22,9 +22,12 @@ class WelcomePage extends Component {
 
   swap(page_name) {
     this.props.navigator.replace({
-      id: page_name
+      id: page_name,
+      gameId: this.props.gameId,
+      player: this.props.player,
     });
   }
+
 
   componentDidMount() {
     this.getPlayer2Joined();
@@ -40,7 +43,7 @@ class WelcomePage extends Component {
         else {
           setTimeout(() => {
             this.getPlayer2Joined();
-            }, 500);
+            }, 10);
         }
       });
     }

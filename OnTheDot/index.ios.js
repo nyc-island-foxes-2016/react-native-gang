@@ -22,6 +22,7 @@ import JoinGame from './ios_components/JoinGame';
 import MainPage from './ios_components/MainPage';
 import WaitingPage from './ios_components/WaitingPage';
 import Instructions from './ios_components/Instructions';
+import LoadPage from './ios_components/LoadPage';
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
@@ -32,7 +33,13 @@ class OnTheDot extends Component {
     var routeId = route.id;
     var gameId = route.gameId;
     var player = route.player;
-    if(routeId === 'MainPage') {
+
+    if(routeId === 'LoadPage') {
+      return (
+        <LoadPage navigator={navigator}/>
+      );
+    }
+    else if(routeId === 'MainPage') {
       return (
         <MainPage navigator={navigator}/>
       );
@@ -70,7 +77,7 @@ class OnTheDot extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{id: 'MainPage', name: 'Index'}}
+        initialRoute={{id: 'LoadPage', name: 'Index'}}
         renderScene={this.renderScene.bind(this)}
         configureScene={(route) => {
           if(route.sceneConfig) {

@@ -15,7 +15,6 @@ var POST_NEW_GAME = '/games'
 class LoadPage extends Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
     var timeoutId = setTimeout(() => {
       if (!this.state.rendered) {
         this.swap();

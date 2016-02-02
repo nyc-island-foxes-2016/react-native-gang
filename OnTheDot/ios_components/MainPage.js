@@ -78,7 +78,9 @@ class MainPage extends Component {
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderGame.bind(this)}/>
-        <StartGameOverlay/>
+        <StartGameOverlay
+          atStart = {this.props.atStart}
+          />
       </View>
     );
   }

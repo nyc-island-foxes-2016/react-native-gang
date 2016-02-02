@@ -13,7 +13,7 @@ import styles from './stylesheet';
 class StartGameOverlay extends Component {
   constructor(props) {
     super(props);
-    this.state = {atStart: true}
+    this.state = {atStart: this.props.atStart}
 
   }
 
@@ -23,8 +23,15 @@ class StartGameOverlay extends Component {
     });
   }
 
+  swap() {
+      this.props.navigator.replace({
+        id: 'MainPage',
+        atStart: true
+      });
+  }
 
   render () {
+    //if (this.props.atStart === false) {
     if (this.state.atStart === false) {
       return <View />;
     }

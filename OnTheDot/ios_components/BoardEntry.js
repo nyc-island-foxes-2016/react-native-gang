@@ -9,6 +9,7 @@ import React, {
   TouchableHighlight,
   View
 } from 'react-native';
+
 import Board from './Board';
 import Dot from './Dot';
 

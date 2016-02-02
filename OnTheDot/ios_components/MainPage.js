@@ -9,6 +9,8 @@ import React, {
   View
 } from 'react-native';
 
+import StartGameOverlay from './Instructions';
+
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
 
@@ -71,11 +73,12 @@ class MainPage extends Component {
           Main page here
           </Text>
         <TouchableHighlight onPress={this.swap.bind(this)}>
-          <Text>Goto Board</Text>
+          <Text>New Board</Text>
         </TouchableHighlight>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderGame.bind(this)}/>
+        <StartGameOverlay/>
       </View>
     );
   }

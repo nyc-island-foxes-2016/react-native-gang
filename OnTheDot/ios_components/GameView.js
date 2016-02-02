@@ -123,18 +123,31 @@ class GameView extends Component {
   }
 
   render() {
-    var letterSet = ['D', 'C', 'B', 'A'];
+    if(this.state.isOver) {
+      var rows = this.state.board.grid.map((dots, row) =>
+        <View key={row} style={styles.row}>
+          {dots.map((clicked, col) =>
+            <View
+              key={col}
+              style={[styles.dot, styles.winDot]}/>
+          )}
+        </View>
+      );
+    }
+    else{
+      var letterSet = ['D', 'C', 'B', 'A'];
 
-    var rows = this.state.board.grid.map((dots, row) =>
-      <View key={row} style={styles.row}>
-        {dots.map((clicked, col) =>
-          <Dot
-            key={col}
-            clicked={clicked}
-            onPress={this.attemptPath.bind(this, row, col, letterSet.pop())}/>
-        )}
-      </View>
-    );
+      var rows = this.state.board.grid.map((dots, row) =>
+        <View key={row} style={styles.row}>
+          {dots.map((clicked, col) =>
+            <Dot
+              key={col}
+              clicked={clicked}
+              onPress={this.attemptPath.bind(this, row, col, letterSet.pop())}/>
+          )}
+        </View>
+      );
+    }
 
     return (
       <View style={styles.container}>

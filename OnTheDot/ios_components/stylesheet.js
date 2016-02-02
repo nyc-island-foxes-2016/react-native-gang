@@ -32,12 +32,20 @@ const styles = StyleSheet.create({
     borderTopWidth: 0
   },
   clickedDot: {
-    backgroundColor: '#D43',
-    borderColor: '#E54'
+    backgroundColor: '#33C',
+    borderColor: '#44D'
   },
   unclickedDot: {
     backgroundColor: '#BBC',
     borderColor: '#CCD'
+  },
+  winDot: {
+    backgroundColor: '#3C3',
+    borderColor: '#4D4'
+  },
+  loseDot: {
+    backgroundColor: '#C33',
+    borderColor: '#D44'
   },
   row: {
     flexDirection: 'row',

@@ -21,6 +21,7 @@ import GameView from './ios_components/GameView';
 import JoinGame from './ios_components/JoinGame';
 import MainPage from './ios_components/MainPage';
 import WaitingPage from './ios_components/WaitingPage';
+import Instructions from './ios_components/Instructions';
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'

@@ -41,16 +41,22 @@ class GameView extends Component {
   }
 
   checkGameExists() {
-    console.log('gameID: ', this.props.gameId);
     fetch(REQUEST_URL + '/games/' + this.props.gameId + '/playing')
     .then((response) => response.json())
-    .then((responseText) => {
-      if(responseText.result === "Yes"){
-        setTimeout(() => {
+    .then((responseData) => {
+      console.log('response in checkgame', responseData);
+      if(responseData.result == true){
+        var timeoutId = setTimeout(() => {
           this.checkGameExists();
         }, 10);
+        this.setState({
+          timeoutId: timeoutId,
+          board: this.state.board,
+          letterPath: this.state.letterPath
+        });
       }
       else {
+        clearTimeout(this.state.timeoutId);
         this.setState({
           isOver: true,
           result: 'You lose.'
@@ -90,11 +96,12 @@ class GameView extends Component {
         })
       }
       else if(this.state.letterPath.length === 4) {
+        clearTimeout(this.state.timeoutId);
         this.setState({
           isOver: true,
           result: 'You Win!'
         });
-        this.deleteGame();
+        this.setGameOver();
       }
       else {
         this.clickDot(row, col);
@@ -102,15 +109,16 @@ class GameView extends Component {
     });
   }
 
-  deleteGame() {
-    fetch(REQUEST_URL + '/games' + this.props.gameId, {
-      method: "DELETE",
+  setGameOver() {
+    fetch(REQUEST_URL + '/games/' + this.props.gameId + '/gameover', {
+      method: 'PATCH',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'}
     }).then((response) => response.json())
-      .then((responseText) => {
-      }).done();
+    .then((responseData) => {
+      console.log('#gameover request response:', responseData);
+    }).done();
   }
 
   render() {

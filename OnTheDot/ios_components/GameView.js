@@ -7,10 +7,11 @@ import React, {
   View
 } from 'react-native';
 import Board from './Board';
-import Dot from './Dot'
+import Dot from './Dot';
+import EndGame from './EndGame';
 
-var REQUEST_URL = 'http://localhost:3000'
-var POST_NEW_GAME = '/games'
+var REQUEST_URL = 'http://localhost:3000';
+var POST_NEW_GAME = '/games';
 
 class GameView extends Component {
   constructor(props) {
@@ -66,7 +67,10 @@ class GameView extends Component {
         })
       }
       else if(this.state.letterPath.length === 4) {
-        this.swap();
+        this.setState({
+          isOver: true,
+          result: 'You Win!'
+        })
       }
       else {
         this.clickDot(row, col);
@@ -98,6 +102,10 @@ class GameView extends Component {
             {this.props.player}
           </Text>
         </TouchableHighlight>
+        <EndGame
+          isOver={this.state.isOver}
+          result={this.state.result}
+          />
       </View>
     );
   }

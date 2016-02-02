@@ -105,7 +105,7 @@ class GameView extends Component {
         <EndGame
           isOver={this.state.isOver}
           result={this.state.result}
-          />
+          onSwap={this.swap.bind(this)}/>
       </View>
     );
   }

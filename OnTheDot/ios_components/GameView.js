@@ -29,7 +29,8 @@ class GameView extends Component {
 
   swap() {
     this.props.navigator.replace({
-      id: 'MainPage'
+      id: 'MainPage',
+      atStart: false
     });
   }
 

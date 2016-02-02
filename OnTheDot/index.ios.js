@@ -30,10 +30,16 @@ var POST_NEW_GAME = '/games'
 
 class OnTheDot extends Component {
 
+  constructor(){
+    super();
+  }
+
   renderScene(route, navigator) {
     var routeId = route.id;
     var gameId = route.gameId;
     var player = route.player;
+    var atStart = route.atStart
+    // have a state here set to true
 
     if(routeId === 'LoadPage') {
       return (
@@ -42,7 +48,8 @@ class OnTheDot extends Component {
     }
     else if(routeId === 'MainPage') {
       return (
-        <MainPage navigator={navigator}/>
+        <MainPage navigator={navigator}
+          atStart = {atStart}/>
       );
     }
     else if(routeId === 'BoardEntry') {

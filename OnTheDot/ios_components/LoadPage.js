@@ -31,8 +31,11 @@ class LoadPage extends Component {
     this.setState({
       rendered: true
     });
+
     this.props.navigator.replace({
-      id: 'MainPage' });
+      id: 'MainPage',
+      atStart: true
+      });
     clearTimeout(this.state.timeoutId);
   };
 

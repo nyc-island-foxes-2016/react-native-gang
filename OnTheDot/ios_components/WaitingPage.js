@@ -26,6 +26,7 @@ class WelcomePage extends Component {
       id: page_name,
       gameId: this.props.gameId,
       player: this.props.player,
+      atStart: false
     });
   }
 

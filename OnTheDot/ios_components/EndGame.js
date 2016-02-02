@@ -14,6 +14,11 @@ class EndGame extends Component {
       return(
         <View style={styles.container}>
           <Text>{this.props.result}</Text>
+        <TouchableHighlight onPress={this.props.onSwap}>
+          <Text style={styles.welcome}>
+            Check Available Games
+          </Text>
+        </TouchableHighlight>
         </View>
       );
     }

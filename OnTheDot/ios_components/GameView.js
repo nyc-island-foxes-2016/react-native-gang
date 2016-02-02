@@ -19,6 +19,10 @@ class GameView extends Component {
     this.state = {board: new Board(), letterPath: ''};
   }
 
+  componentDidMount() {
+    this.checkGameExists();
+  }
+
   swap() {
     this.props.navigator.replace({
       id: 'MainPage'
@@ -33,6 +37,25 @@ class GameView extends Component {
     this.setState({
       board: this.state.board.mark(row, col),
       letterPath: this.state.letterPath
+    });
+  }
+
+  checkGameExists() {
+    console.log('gameID: ', this.props.gameId);
+    fetch(REQUEST_URL + '/games/' + this.props.gameId + '/playing')
+    .then((response) => response.json())
+    .then((responseText) => {
+      if(responseText.result === "Yes"){
+        setTimeout(() => {
+          this.checkGameExists();
+        }, 10);
+      }
+      else {
+        this.setState({
+          isOver: true,
+          result: 'You lose.'
+        });
+      }
     });
   }
 
@@ -70,12 +93,24 @@ class GameView extends Component {
         this.setState({
           isOver: true,
           result: 'You Win!'
-        })
+        });
+        this.deleteGame();
       }
       else {
         this.clickDot(row, col);
       }
     });
+  }
+
+  deleteGame() {
+    fetch(REQUEST_URL + '/games' + this.props.gameId, {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'}
+    }).then((response) => response.json())
+      .then((responseText) => {
+      }).done();
   }
 
   render() {

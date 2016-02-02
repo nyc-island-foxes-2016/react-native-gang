@@ -27,12 +27,12 @@ class LoadPage extends Component {
   }
 
   swap() {
-    this.props.navigator.replace({
-      id: 'MainPage' });
-    clearTimeout(this.state.timeoutId);
     this.setState({
       rendered: true
     });
+    this.props.navigator.replace({
+      id: 'MainPage' });
+    clearTimeout(this.state.timeoutId);
   };
 
   render() {

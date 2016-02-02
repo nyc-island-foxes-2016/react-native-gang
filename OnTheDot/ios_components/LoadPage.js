@@ -15,26 +15,25 @@ var POST_NEW_GAME = '/games'
 class LoadPage extends Component {
   constructor(props) {
     super(props);
+    var timeoutId = setTimeout(() => {
+      if (!this.state.rendered) {
+        this.swap();
+      }
+    }, 3000);
     this.state = {
-      rendered: false
+      rendered: false,
+      timeoutId: timeoutId
     }
   }
 
   swap() {
-      this.props.navigator.replace({
-        id: 'MainPage' });
-        this.setState({
-          rendered: true
-        });
-      };
-
-  componentDidMount() {
-    setTimeout(() => {
-      if (!this.state.rendered) {
-        this.swap();
-      }
-  }, 3000);
-}
+    this.props.navigator.replace({
+      id: 'MainPage' });
+    clearTimeout(this.state.timeoutId);
+    this.setState({
+      rendered: true
+    });
+  };
 
   render() {
     return(

@@ -8,6 +8,7 @@ import React, {
   TouchableHighlight,
   View
 } from 'react-native';
+import styles from './stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
 var GET_CURRENT_GAME = '/games/'
@@ -78,25 +79,5 @@ class WelcomePage extends Component {
       );
     }
   }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 40,
-    textAlign: 'center',
-    margin: 10,
-    padding: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  }
-});
 
 module.exports = WelcomePage;

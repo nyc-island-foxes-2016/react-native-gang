@@ -23,6 +23,7 @@ import MainPage from './ios_components/MainPage';
 import WaitingPage from './ios_components/WaitingPage';
 import Instructions from './ios_components/Instructions';
 import LoadPage from './ios_components/LoadPage';
+import styles from './ios_components/stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
 var POST_NEW_GAME = '/games'
@@ -89,48 +90,5 @@ class OnTheDot extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 40,
-    textAlign: 'center',
-    margin: 10,
-    padding: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  dot: {
-    height: 60,
-    width: 60,
-    margin: 60,
-    borderRadius: 30,
-  },
-  clickedDot: {
-    backgroundColor: '#DA8',
-    borderColor: '#642',
-    borderStyle: 'solid',
-    borderWidth: 4
-  },
-  unclickedDot: {
-    backgroundColor: '#ABC',
-    borderColor: '#456',
-    borderStyle: 'solid',
-    borderWidth: 4
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
 
 AppRegistry.registerComponent('OnTheDot', () => OnTheDot);

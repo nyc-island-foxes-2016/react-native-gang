@@ -124,12 +124,19 @@ class GameView extends Component {
 
   render() {
     if(this.state.isOver) {
+      var dotColor = 'clickedDot';
+      if(this.state.result === 'You Win!') {
+        dotColor = 'winDot';
+      }
+      else if(this.state.result === 'You lose.') {
+        dotColor = 'loseDot';
+      }
       var rows = this.state.board.grid.map((dots, row) =>
         <View key={row} style={styles.row}>
           {dots.map((clicked, col) =>
             <View
               key={col}
-              style={[styles.dot, styles.winDot]}/>
+              style={[styles.dot, styles[dotColor]]}/>
           )}
         </View>
       );

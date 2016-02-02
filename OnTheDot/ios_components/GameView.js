@@ -7,15 +7,20 @@ import React, {
   View
 } from 'react-native';
 import Board from './Board';
-import Dot from './Dot'
+import Dot from './Dot';
+import EndGame from './EndGame';
 
-var REQUEST_URL = 'http://localhost:3000'
-var POST_NEW_GAME = '/games'
+var REQUEST_URL = 'http://localhost:3000';
+var POST_NEW_GAME = '/games';
 
 class GameView extends Component {
   constructor(props) {
     super(props);
     this.state = {board: new Board(), letterPath: ''};
+  }
+
+  componentDidMount() {
+    this.checkGameExists();
   }
 
   swap() {
@@ -32,6 +37,31 @@ class GameView extends Component {
     this.setState({
       board: this.state.board.mark(row, col),
       letterPath: this.state.letterPath
+    });
+  }
+
+  checkGameExists() {
+    fetch(REQUEST_URL + '/games/' + this.props.gameId + '/playing')
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log('response in checkgame', responseData);
+      if(responseData.result == true){
+        var timeoutId = setTimeout(() => {
+          this.checkGameExists();
+        }, 10);
+        this.setState({
+          timeoutId: timeoutId,
+          board: this.state.board,
+          letterPath: this.state.letterPath
+        });
+      }
+      else {
+        clearTimeout(this.state.timeoutId);
+        this.setState({
+          isOver: true,
+          result: 'You lose.'
+        });
+      }
     });
   }
 
@@ -66,12 +96,29 @@ class GameView extends Component {
         })
       }
       else if(this.state.letterPath.length === 4) {
-        this.swap();
+        clearTimeout(this.state.timeoutId);
+        this.setState({
+          isOver: true,
+          result: 'You Win!'
+        });
+        this.setGameOver();
       }
       else {
         this.clickDot(row, col);
       }
     });
+  }
+
+  setGameOver() {
+    fetch(REQUEST_URL + '/games/' + this.props.gameId + '/gameover', {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'}
+    }).then((response) => response.json())
+    .then((responseData) => {
+      console.log('#gameover request response:', responseData);
+    }).done();
   }
 
   render() {
@@ -98,6 +145,10 @@ class GameView extends Component {
             {this.props.player}
           </Text>
         </TouchableHighlight>
+        <EndGame
+          isOver={this.state.isOver}
+          result={this.state.result}
+          onSwap={this.swap.bind(this)}/>
       </View>
     );
   }

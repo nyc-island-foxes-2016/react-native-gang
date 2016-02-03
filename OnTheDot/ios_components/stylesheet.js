@@ -28,8 +28,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderStyle: 'solid',
     borderWidth: 4,
-    borderLeftWidth: 0,
-    borderTopWidth: 0
   },
   clickedDot: {
     backgroundColor: '#33C',
@@ -37,7 +35,7 @@ const styles = StyleSheet.create({
   },
   unclickedDot: {
     backgroundColor: '#BBC',
-    borderColor: '#CCD'
+    borderColor: '#BBC'
   },
   winDot: {
     backgroundColor: '#3C3',
@@ -81,6 +79,21 @@ const styles = StyleSheet.create({
     marginRight: 20,
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
+  },
+    overlayIntro: {
+    fontSize: 40,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    fontFamily: 'AvenirNext-DemiBold',
+    textAlign: 'center',
+    backgroundColor:'#dcedc1',
+    overflow: 'hidden',
+    borderColor: '#ffff',
+    borderRadius: 30,
+    borderWidth: 0.5,
+    height: 400,
+    width: 300,
   },
   newGame: {
     backgroundColor: '#887766',

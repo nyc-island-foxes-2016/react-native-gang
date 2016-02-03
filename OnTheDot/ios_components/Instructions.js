@@ -31,12 +31,11 @@ class StartGameOverlay extends Component {
   }
 
   render () {
-    //if (this.props.atStart === false) {
     if (this.state.atStart === false) {
       return <View />;
     }
 
-    var instructions = "Play the game!"
+    var instructions = "TODO write the instructions"
 
 
   return (
@@ -45,7 +44,7 @@ class StartGameOverlay extends Component {
         onPress = {this.instructionDrop.bind(this)}
         underlayColor="transparent"
         activeOpacity={0.5}>
-      <Text style={styles.overlayMessage}>{instructions}</Text>
+      <Text style={styles.overlayIntro}>{instructions}</Text>
       </TouchableHighlight>
     </View>
     );

@@ -8,13 +8,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#b3e8e1',
   },
   welcome: {
-    fontSize: 40,
+    fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    padding: 10
+    padding: 10,
+    color: 'white',
+    borderStyle: 'solid',
+    borderColor: '#a1a1af'
   },
   instructions: {
     textAlign: 'center',
@@ -22,30 +25,28 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   dot: {
-    height: 60,
-    width: 60,
-    margin: 60,
-    borderRadius: 30,
+    height: 30,
+    width: 30,
+    margin: 30,
+    borderRadius: 15,
     borderStyle: 'solid',
     borderWidth: 4,
-    borderLeftWidth: 0,
-    borderTopWidth: 0
   },
   clickedDot: {
-    backgroundColor: '#33C',
-    borderColor: '#44D'
+    backgroundColor: '#D40145',
+    borderColor: '#D40145'
   },
   unclickedDot: {
-    backgroundColor: '#BBC',
-    borderColor: '#CCD'
+    backgroundColor: '#FFF',
+    borderColor: '#FFF'
   },
   winDot: {
-    backgroundColor: '#3C3',
-    borderColor: '#4D4'
+    backgroundColor: '#D40145',
+    borderColor: '#D40145'
   },
   loseDot: {
-    backgroundColor: '#C33',
-    borderColor: '#D44'
+    backgroundColor: '#D40145',
+    borderColor: '#D40145'
   },
   dragContainer: {
     position: 'absolute',
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-    overlay: {
+  overlay: {
     backgroundColor: '#887766',
     position: 'absolute',
     top: 0,
@@ -82,6 +83,42 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
   },
+    overlayIntro: {
+    fontSize: 25,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    fontFamily: 'AvenirNext-DemiBold',
+    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:'#81D9CD',
+    overflow: 'hidden',
+    borderColor: '#81D9CD',
+    borderRadius: 30,
+    borderWidth: 0.5,
+    height: 400,
+    width: 300,
+    opacity: 0.8,
+    padding: 25
+  },
+  overlayEndGame: {
+    fontSize: 60,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    fontFamily: 'AvenirNext-DemiBold',
+    textAlign: 'center',
+    backgroundColor:'#81D9CD',
+    overflow: 'hidden',
+    borderColor: '#81D9CD',
+    borderRadius: 30,
+    borderWidth: 0.5,
+    height: 200,
+    width: 300,
+    opacity: 0.8,
+  },
   newGame: {
     backgroundColor: '#887766',
     padding: 20,
@@ -91,6 +128,56 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontFamily: 'AvenirNext-DemiBold',
+  },
+  loadPage: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:'#3AA1BF'
+  },
+  loadPageText: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold'
+  },
+  button: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 23,
+    paddingTop: 15,
+    paddingBottom: 10,
+    justifyContent: 'center',
+    width: 200,
+    height: 60,
+    backgroundColor: 'transparent',
+    borderRadius: 20,
+    borderStyle: 'solid',
+    borderWidth: 3,
+    borderColor: 'white',
+    marginBottom: 20
+  },
+  boardButton: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    width: 120,
+    height: 25,
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'white',
+    marginBottom: 20,
+    top: 100
+  },
+  boardInstructions: {
+    bottom: 80,
+    color: '#2e2e32',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    justifyContent: 'center'
   }
 });
 

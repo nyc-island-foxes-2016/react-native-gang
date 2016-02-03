@@ -31,21 +31,20 @@ class StartGameOverlay extends Component {
   }
 
   render () {
-    //if (this.props.atStart === false) {
     if (this.state.atStart === false) {
       return <View />;
     }
 
-    var instructions = "Play the game!"
+    var instructions = "Each board consists of a grid of dots. Select dots to form your board pattern. Find nearby opponents and race to guess their pattern."
 
 
   return (
     <View style= {styles.overlay}>
       <TouchableHighlight
         onPress = {this.instructionDrop.bind(this)}
-        underlayColor="transparent"
-        activeOpacity={0.5}>
-      <Text style={styles.overlayMessage}>{instructions}</Text>
+        underlayColor="white"
+        activeOpacity={0.3}>
+      <Text style={styles.overlayIntro}>{instructions}</Text>
       </TouchableHighlight>
     </View>
     );

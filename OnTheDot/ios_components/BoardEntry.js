@@ -79,12 +79,15 @@ class BoardEntry extends Component {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.boardInstructions}>
+        Set your dot pattern and submit when ready.
+        </Text>
         <View>
           {rows}
         </View>
         <TouchableHighlight onPress={this.postNewGame.bind(this)}>
-          <Text style={styles.welcome}>
-            Post your board!
+          <Text style={styles.boardButton}>
+            Submit Board
           </Text>
         </TouchableHighlight>
       </View>

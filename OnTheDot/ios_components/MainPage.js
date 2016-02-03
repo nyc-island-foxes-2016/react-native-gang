@@ -17,12 +17,7 @@ var POST_NEW_GAME = '/games'
 class MainPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-        loaded: false
-      })
-    };
+    this.state = {gameId: 0}
   }
 
   componentDidMount() {
@@ -33,13 +28,11 @@ class MainPage extends Component {
     fetch(REQUEST_URL + '/games/waiting')
       .then((response) => response.json())
       .then((responseData) => {
-        var gameObjects = responseData.map(function(game) {
-          return {id: game[0], player1: game[1], created_at: game[2]};
-        })
+      if(responseData){
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(gameObjects),
-          loaded: true
+          gameId: responseData[0]
         });
+      }
       }).done();
   }
 
@@ -49,35 +42,34 @@ class MainPage extends Component {
       });
   }
 
-  goToJoinGame(game) {
+  goToJoinGame(gameId) {
     this.props.navigator.replace({
       id: 'JoinGame',
-      gameId: game.id
+      gameId: gameId
     });
   }
 
-  renderGame(game) {
-    return (
-      <View>
-        <TouchableHighlight onPress={this.goToJoinGame.bind(this, game)}>
-          <Text>{game.player1} {game.created_at} {game.id}</Text>
-        </TouchableHighlight>
-      </View>
-    );
-  }
-
   render() {
+    if (!this.state.gameId) {
+      return(
+        <View style={styles.container}>
+          <TouchableHighlight onPress={this.swap.bind(this)}>
+            <Text style={styles.button}>Post New Board</Text>
+          </TouchableHighlight>
+          <StartGameOverlay
+            atStart = {this.props.atStart}/>
+        </View>
+      );
+    }
+
     return(
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Main page here
-          </Text>
         <TouchableHighlight onPress={this.swap.bind(this)}>
-          <Text>New Board</Text>
+          <Text style={styles.button}>Post New Board</Text>
         </TouchableHighlight>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderGame.bind(this)}/>
+        <TouchableHighlight onPress={this.goToJoinGame.bind(this, this.state.gameId)}>
+          <Text style={styles.button}>Play</Text>
+        </TouchableHighlight>
         <StartGameOverlay
           atStart = {this.props.atStart}/>
       </View>

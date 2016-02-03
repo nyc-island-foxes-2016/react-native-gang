@@ -42,8 +42,8 @@ class StartGameOverlay extends Component {
     <View style= {styles.overlay}>
       <TouchableHighlight
         onPress = {this.instructionDrop.bind(this)}
-        underlayColor="transparent"
-        activeOpacity={0.5}>
+        underlayColor="white"
+        activeOpacity={0.3}>
       <Text style={styles.overlayIntro}>{instructions}</Text>
       </TouchableHighlight>
     </View>

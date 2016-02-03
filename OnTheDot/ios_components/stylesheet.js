@@ -87,9 +87,9 @@ const styles = StyleSheet.create({
     marginRight: 20,
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
-    backgroundColor:'#dcedc1',
+    backgroundColor:'#81D9CD',
     overflow: 'hidden',
-    borderColor: '#ffff',
+    borderColor: '#81D9CD',
     borderRadius: 30,
     borderWidth: 0.5,
     height: 400,
@@ -104,6 +104,18 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontFamily: 'AvenirNext-DemiBold',
+  },
+  loadPage: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // fontSize: 40,
+    backgroundColor:'#3AA1BF'
+  },
+  loadPageText: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold'
   }
 });
 

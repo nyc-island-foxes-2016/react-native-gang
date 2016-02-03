@@ -85,7 +85,8 @@ class OnTheDot extends Component {
       return(
         <JoinGame
           navigator={navigator}
-          gameId={gameId}/>
+          gameId={gameId}
+          peer={peer}/>
       );
     }
     else if(routeId === 'WaitingPage'){

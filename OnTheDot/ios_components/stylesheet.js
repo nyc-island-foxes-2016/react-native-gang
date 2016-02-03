@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#81D9CD',
   },
   welcome: {
     fontSize: 40,
@@ -118,8 +118,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   button: {
-    width: 40,
-    height: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    width: 100,
+    height: 50,
+    backgroundColor: 'transparent',
+    borderRadius: 20,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'white'
   }
 });
 

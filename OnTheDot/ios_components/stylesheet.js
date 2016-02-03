@@ -27,25 +27,35 @@ const styles = StyleSheet.create({
     margin: 60,
     borderRadius: 30,
     borderStyle: 'solid',
-    borderWidth: 4,
-    borderLeftWidth: 0,
-    borderTopWidth: 0
+    borderWidth: 4
   },
   clickedDot: {
-    backgroundColor: '#33C',
-    borderColor: '#44D'
+    backgroundColor: '#44C',
+    borderTopColor: '#55D',
+    borderLeftColor: '#55D',
+    borderRightColor: '#33B',
+    borderBottomColor: '#33B'
   },
   unclickedDot: {
     backgroundColor: '#BBC',
-    borderColor: '#CCD'
+    borderTopColor: '#CCD',
+    borderLeftColor: '#CCD',
+    borderRightColor: '#AAB',
+    borderBottomColor: '#AAB'
   },
   winDot: {
-    backgroundColor: '#3C3',
-    borderColor: '#4D4'
+    backgroundColor: '#8D4',
+    borderTopColor: '#9E5',
+    borderLeftColor: '#9E5',
+    borderRightColor: '#7C3',
+    borderBottomColor: '#7C3'
   },
   loseDot: {
-    backgroundColor: '#C33',
-    borderColor: '#D44'
+    backgroundColor: '#D52',
+    borderTopColor: '#C41',
+    borderLeftColor: '#C41',
+    borderRightColor: '#E63',
+    borderBottomColor: '#E63'
   },
   row: {
     flexDirection: 'row',

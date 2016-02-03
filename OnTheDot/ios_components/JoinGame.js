@@ -8,6 +8,7 @@ import React, {
 } from 'react-native';
 import Board from './Board';
 import Dot from './Dot';
+import MultipeerConnectivity from 'MultipeerConnectivity'
 import styles from './stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
@@ -21,10 +22,18 @@ class JoinGame extends Component {
 
 
   swap() {
+    MultipeerConnectivity.send(
+      [this.props.peer],
+      {readyToStart: true},
+      function() {
+        console.log(arguments);
+      }
+    );
     this.props.navigator.replace({
       id: 'GameView',
       gameId: this.state.gameId,
-      player: this.state.player
+      player: this.state.player,
+      peer: this.props.peer
     });
   }
 

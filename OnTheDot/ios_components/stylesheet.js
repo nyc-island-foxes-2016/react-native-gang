@@ -47,6 +47,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#C33',
     borderColor: '#D44'
   },
+  dragContainer: {
+    position: 'absolute',
+    top: 0,
+    left: -90
+  },
+  dragDot: {
+    backgroundColor: '#3CC',
+    borderColor: '#4DD'
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'center',

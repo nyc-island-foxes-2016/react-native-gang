@@ -81,7 +81,6 @@ class MainPage extends Component {
           renderRow={this.renderGame.bind(this)}/>
         <StartGameOverlay
           atStart = {this.props.atStart}/>
-        <Bouncing/>
       </View>
     );
   }

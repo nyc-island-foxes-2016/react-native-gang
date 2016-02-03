@@ -27,7 +27,10 @@ const styles = StyleSheet.create({
     margin: 60,
     borderRadius: 30,
     borderStyle: 'solid',
-    borderWidth: 4
+    borderTopWidth: 3,
+    borderLeftWidth: 3,
+    borderRightWidth: 8,
+    borderBottomWidth: 8
   },
   clickedDot: {
     backgroundColor: '#44C',

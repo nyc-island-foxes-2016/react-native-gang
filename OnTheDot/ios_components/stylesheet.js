@@ -8,13 +8,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#81D9CD',
+    backgroundColor: '#b3e8e1',
   },
   welcome: {
-    fontSize: 40,
+    fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    padding: 10
+    padding: 10,
+    color: 'white',
+    borderStyle: 'solid',
+    borderColor: '#a1a1af'
   },
   instructions: {
     textAlign: 'center',
@@ -22,20 +25,20 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   dot: {
-    height: 60,
-    width: 60,
-    margin: 60,
-    borderRadius: 30,
+    height: 30,
+    width: 30,
+    margin: 30,
+    borderRadius: 15,
     borderStyle: 'solid',
     borderWidth: 4,
   },
   clickedDot: {
-    backgroundColor: '#33C',
-    borderColor: '#44D'
+    backgroundColor: '#D40145',
+    borderColor: '#D40145'
   },
   unclickedDot: {
-    backgroundColor: '#BBC',
-    borderColor: '#BBC'
+    backgroundColor: '#FFF',
+    borderColor: '#FFF'
   },
   winDot: {
     backgroundColor: '#3C3',
@@ -128,7 +131,30 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderStyle: 'solid',
     borderWidth: 2,
-    borderColor: 'white'
+    borderColor: 'white',
+    marginBottom: 20
+  },
+  boardButton: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    width: 120,
+    height: 25,
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'white',
+    marginBottom: 20,
+    top: 100
+  },
+  boardInstructions: {
+    bottom: 80,
+    color: '#2e2e32',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    justifyContent: 'center'
   }
 });
 

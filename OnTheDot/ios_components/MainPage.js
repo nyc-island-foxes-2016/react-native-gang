@@ -54,7 +54,7 @@ class MainPage extends Component {
       return(
         <View style={styles.container}>
           <TouchableHighlight onPress={this.swap.bind(this)}>
-            <Text style={styles.button}>New Board</Text>
+            <Text style={styles.button}>Post New Board</Text>
           </TouchableHighlight>
           <StartGameOverlay
             atStart = {this.props.atStart}/>
@@ -65,10 +65,10 @@ class MainPage extends Component {
     return(
       <View style={styles.container}>
         <TouchableHighlight onPress={this.swap.bind(this)}>
-          <Text style={styles.button}>New Board</Text>
+          <Text style={styles.button}>Post New Board</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={this.goToJoinGame.bind(this, this.state.gameId)}>
-          <Text style={styles.button}>Join a Game</Text>
+          <Text style={styles.button}>Play</Text>
         </TouchableHighlight>
         <StartGameOverlay
           atStart = {this.props.atStart}/>

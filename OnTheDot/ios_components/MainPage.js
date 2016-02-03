@@ -47,8 +47,22 @@ class MainPage extends Component {
     });
   }
 
-  render(game) {
-    console.log("Game: ", game)
+  render() {
+    if (this.state.gameId == 0) {
+      return(
+        <View style={styles.container}>
+          <Text style={styles.welcome}>
+            Main page here
+            </Text>
+          <TouchableHighlight onPress={this.swap.bind(this)}>
+            <Text>New Board</Text>
+          </TouchableHighlight>
+          <StartGameOverlay
+            atStart = {this.props.atStart}/>
+        </View>
+      );
+    }
+
     return(
       <View style={styles.container}>
         <Text style={styles.welcome}>

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   dragDot: {
     backgroundColor: '#3CC',
-    borderColor: '#4DD'
+    borderColor: '#3CC'
   },
   row: {
     flexDirection: 'row',

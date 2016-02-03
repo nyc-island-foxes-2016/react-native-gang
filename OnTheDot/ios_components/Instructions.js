@@ -35,7 +35,7 @@ class StartGameOverlay extends Component {
       return <View />;
     }
 
-    var instructions = "TODO write the instructions"
+    var instructions = "Each board consists of a grid of dots. Select dots to form your board pattern. Find nearby opponents and race to guess their pattern."
 
 
   return (

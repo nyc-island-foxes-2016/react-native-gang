@@ -41,12 +41,12 @@ const styles = StyleSheet.create({
     borderColor: '#FFF'
   },
   winDot: {
-    backgroundColor: '#3C3',
-    borderColor: '#4D4'
+    backgroundColor: '#D40145',
+    borderColor: '#D40145'
   },
   loseDot: {
-    backgroundColor: '#C33',
-    borderColor: '#D44'
+    backgroundColor: '#D40145',
+    borderColor: '#D40145'
   },
   dragContainer: {
     position: 'absolute',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-    overlay: {
+  overlay: {
     backgroundColor: '#887766',
     position: 'absolute',
     top: 0,
@@ -84,7 +84,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
     overlayIntro: {
-    fontSize: 40,
+    fontSize: 25,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    fontFamily: 'AvenirNext-DemiBold',
+    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:'#81D9CD',
+    overflow: 'hidden',
+    borderColor: '#81D9CD',
+    borderRadius: 30,
+    borderWidth: 0.5,
+    height: 400,
+    width: 300,
+    opacity: 0.8,
+    padding: 25
+  },
+  overlayEndGame: {
+    fontSize: 60,
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
@@ -95,8 +115,9 @@ const styles = StyleSheet.create({
     borderColor: '#81D9CD',
     borderRadius: 30,
     borderWidth: 0.5,
-    height: 400,
+    height: 200,
     width: 300,
+    opacity: 0.8,
   },
   newGame: {
     backgroundColor: '#887766',
@@ -112,7 +133,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // fontSize: 40,
     backgroundColor:'#3AA1BF'
   },
   loadPageText: {
@@ -124,13 +144,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+    fontSize: 23,
+    paddingTop: 15,
+    paddingBottom: 10,
     justifyContent: 'center',
-    width: 100,
-    height: 50,
+    width: 200,
+    height: 60,
     backgroundColor: 'transparent',
     borderRadius: 20,
     borderStyle: 'solid',
-    borderWidth: 2,
+    borderWidth: 3,
     borderColor: 'white',
     marginBottom: 20
   },

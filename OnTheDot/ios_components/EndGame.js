@@ -13,11 +13,12 @@ class EndGame extends Component {
   render() {
     if(this.props.isOver){
       return(
-        <View style={styles.container}>
-          <Text>{this.props.result}</Text>
-        <TouchableHighlight onPress={this.props.onSwap}>
-          <Text style={styles.welcome}>
-            Check Available Games
+        <View style={styles.overlay}>
+        <TouchableHighlight
+          onPress={this.props.onSwap}
+          activeOpacity={0.2}>
+          <Text style={styles.overlayEndGame}>
+            {this.props.result}
           </Text>
         </TouchableHighlight>
         </View>

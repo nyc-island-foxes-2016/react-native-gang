@@ -168,14 +168,13 @@ class GameView extends Component {
 
     return (
       <View style={styles.container}>
-        <View>
+        <Text style={styles.boardInstructions}>
+        {"Decode your opponent's board"}
+        </Text>
+        <Text style={styles.boardInstructions}>
+        {"before they solve yours!"}
+        </Text>
           {rows}
-        </View>
-        <TouchableHighlight onPress={this.swap.bind(this)}>
-          <Text style={styles.welcome}>
-            {this.props.player}
-          </Text>
-        </TouchableHighlight>
         <EndGame
           isOver={this.state.isOver}
           result={this.state.result}

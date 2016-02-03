@@ -8,7 +8,6 @@ import React, {
   TouchableHighlight,
   View
 } from 'react-native';
-import Bouncing from './Bouncing';
 import StartGameOverlay from './Instructions';
 import styles from './stylesheet'
 

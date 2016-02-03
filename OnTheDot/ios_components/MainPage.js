@@ -28,9 +28,11 @@ class MainPage extends Component {
     fetch(REQUEST_URL + '/games/waiting')
       .then((response) => response.json())
       .then((responseData) => {
-      this.setState({
-        gameId: responseData[0]
-      });
+      if(responseData){
+        this.setState({
+          gameId: responseData[0]
+        });
+      }
       }).done();
   }
 
@@ -48,14 +50,11 @@ class MainPage extends Component {
   }
 
   render() {
-    if (this.state.gameId == 0) {
+    if (!this.state.gameId) {
       return(
         <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Main page here
-            </Text>
           <TouchableHighlight onPress={this.swap.bind(this)}>
-            <Text>New Board</Text>
+            <Text style={styles.button}>New Board</Text>
           </TouchableHighlight>
           <StartGameOverlay
             atStart = {this.props.atStart}/>
@@ -65,14 +64,11 @@ class MainPage extends Component {
 
     return(
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Main page here
-          </Text>
         <TouchableHighlight onPress={this.swap.bind(this)}>
-          <Text>New Board</Text>
+          <Text style={styles.button}>New Board</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={this.goToJoinGame.bind(this, this.state.gameId)}>
-          <Text>Join a Game</Text>
+          <Text style={styles.button}>Join a Game</Text>
         </TouchableHighlight>
         <StartGameOverlay
           atStart = {this.props.atStart}/>

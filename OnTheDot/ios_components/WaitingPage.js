@@ -74,12 +74,10 @@ class WelcomePage extends Component {
             Waiting....
           </Text>
           <TouchableHighlight onPress = {this.deleteGame.bind(this)}>
-            <Text>
+            <Text style={styles.button}>
               Go back to start!
             </Text>
           </TouchableHighlight>
-        </View>
-        <View>
           <Bouncing/>
         </View>
       </View>

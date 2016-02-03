@@ -50,8 +50,9 @@ const styles = StyleSheet.create({
   },
   dragContainer: {
     position: 'absolute',
-    top: 0,
-    left: -90
+    top: -70,
+    left: 50,
+    backgroundColor: 'transparent'
   },
   dragDot: {
     backgroundColor: '#3CC',

@@ -18,11 +18,12 @@ import Board from './ios_components/Board';
 import BoardEntry from './ios_components/BoardEntry';
 import Dot from './ios_components/Dot';
 import GameView from './ios_components/GameView';
-import JoinGame from './ios_components/JoinGame';
-import MainPage from './ios_components/MainPage';
-import WaitingPage from './ios_components/WaitingPage';
 import Instructions from './ios_components/Instructions';
+import JoinGame from './ios_components/JoinGame';
 import LoadPage from './ios_components/LoadPage';
+import MainPage from './ios_components/MainPage';
+import MultipeerConnectivity from 'MultipeerConnectivity';
+import WaitingPage from './ios_components/WaitingPage';
 import styles from './ios_components/stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
@@ -32,6 +33,28 @@ class OnTheDot extends Component {
 
   constructor(){
     super();
+  }
+
+  componentDidMount() {
+    MultipeerConnectivity.on('peerFound', this._onChange);
+    MultipeerConnectivity.on('peerLost', this._onChange);
+    MultipeerConnectivity.on('invite', ((event) => {
+      MultipeerConnectivity.rsvp(event.invite.id, true);
+    }).bind(this));
+    MultipeerConnectivity.on('peerConnected', (event) => {
+      alert(event.peer.id + ' connected!');
+    });
+    MultipeerConnectivity.advertise('channel1', {name: 'User-' + Math.round(Math.random() * 1e6)};
+    MultipeerConnectivity.browse('channel1');
+  }
+
+  getRandomPeer() {
+    var allPeers = MultipeerConnectivity.getAllPeers();
+    if(allPeers) {
+      randIndex = Math.floor(Math.random * allPeers.length);
+      return allPeers[randIndex];
+    }
+    return null;
   }
 
   renderScene(route, navigator) {
@@ -49,7 +72,8 @@ class OnTheDot extends Component {
     else if(routeId === 'MainPage') {
       return (
         <MainPage navigator={navigator}
-          atStart = {atStart}/>
+          atStart = {atStart}
+          randPeer = {this.getRandomPeer()}/>
       );
     }
     else if(routeId === 'BoardEntry') {

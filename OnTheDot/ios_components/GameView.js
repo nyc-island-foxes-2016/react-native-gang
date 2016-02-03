@@ -19,7 +19,8 @@ class GameView extends Component {
     super(props);
     this.state = {
       board: new Board(),
-      letterPath: ''
+      letterPath: '',
+      isOver: false
     };
   }
 
@@ -53,7 +54,7 @@ class GameView extends Component {
       if(responseData.result == true){
         var timeoutId = setTimeout(() => {
           this.checkGameExists();
-        }, 1000);
+        }, 10);
         this.setState({
           timeoutId: timeoutId,
           board: this.state.board,
@@ -62,10 +63,12 @@ class GameView extends Component {
       }
       else {
         clearTimeout(this.state.timeoutId);
-        this.setState({
-          isOver: true,
-          result: 'You lose.'
-        });
+        if(this.state.isOver === false){
+          this.setState({
+            isOver: true,
+            result: 'You lose.'
+          });
+        }
       }
     });
   }

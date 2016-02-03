@@ -116,6 +116,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 40,
     fontWeight: 'bold'
+  },
+  button: {
+    width: 40,
+    height: 20,
   }
 });
 

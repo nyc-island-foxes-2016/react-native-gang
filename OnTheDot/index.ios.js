@@ -44,7 +44,6 @@ class OnTheDot extends Component {
     MultipeerConnectivity.on('peerConnected', (event) => {
       alert(event.peer.id + ' connected!');
     });
-    MultipeerConnectivity.advertise('channel1', {name: 'User-' + Math.round(Math.random() * 1e6)};
     MultipeerConnectivity.browse('channel1');
   }
 
@@ -61,7 +60,8 @@ class OnTheDot extends Component {
     var routeId = route.id;
     var gameId = route.gameId;
     var player = route.player;
-    var atStart = route.atStart
+    var atStart = route.atStart;
+    var peer = route.peer;
     // have a state here set to true
 
     if(routeId === 'LoadPage') {
@@ -93,7 +93,8 @@ class OnTheDot extends Component {
         <WaitingPage
         navigator={navigator}
         gameId = {gameId}
-        player = {player}/>
+        player = {player}
+        peer = {peer}/>
         );
     }
     else if(routeId === 'GameView') {

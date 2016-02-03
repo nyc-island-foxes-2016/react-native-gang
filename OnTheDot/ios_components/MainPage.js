@@ -79,8 +79,7 @@ class MainPage extends Component {
           dataSource={this.state.dataSource}
           renderRow={this.renderGame.bind(this)}/>
         <StartGameOverlay
-          atStart = {this.props.atStart}
-          />
+          atStart = {this.props.atStart}/>
       </View>
     );
   }

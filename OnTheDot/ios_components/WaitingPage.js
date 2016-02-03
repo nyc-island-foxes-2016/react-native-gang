@@ -8,6 +8,7 @@ import React, {
   TouchableHighlight,
   View
 } from 'react-native';
+import Bouncing from './Bouncing';
 import styles from './stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
@@ -68,14 +69,19 @@ class WelcomePage extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style = {styles.welcome}>
-          Waiting....
-        </Text>
-      <TouchableHighlight onPress = {this.deleteGame.bind(this)}>
-        <Text>
-          Go back to start!
-        </Text>
-      </TouchableHighlight>
+        <View>
+          <Text style = {styles.welcome}>
+            Waiting....
+          </Text>
+          <TouchableHighlight onPress = {this.deleteGame.bind(this)}>
+            <Text>
+              Go back to start!
+            </Text>
+          </TouchableHighlight>
+        </View>
+        <View>
+          <Bouncing/>
+        </View>
       </View>
       );
     }

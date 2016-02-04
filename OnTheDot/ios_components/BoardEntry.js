@@ -77,21 +77,39 @@ class BoardEntry extends Component {
       </View>
     );
 
-    return (
-      <View style={styles.container}>
-        <Text style={styles.boardInstructions}>
-        Set your dot pattern and submit when ready.
-        </Text>
-        <View>
-          {rows}
-        </View>
-        <TouchableHighlight onPress={this.postNewGame.bind(this)}>
-          <Text style={styles.boardButton}>
-            Submit Board
+    if(this.state.letterPath.length == 4){
+      return (
+        <View style={styles.container}>
+          <Text style={styles.boardInstructions}>
+          Your opponent is ready.
           </Text>
-        </TouchableHighlight>
-      </View>
-    );
+          <Text style={styles.boardInstructions}>
+          Set your dot pattern and submit to play.
+          </Text>
+          <View>
+            {rows}
+          </View>
+          <TouchableHighlight onPress={this.postNewGame.bind(this)}>
+            <Text style={styles.boardButton}>
+              Submit Board
+            </Text>
+          </TouchableHighlight>
+        </View>
+        );
+      }
+      return (
+        <View style={styles.container}>
+          <Text style={styles.boardInstructions}>
+          Your opponent is ready.
+          </Text>
+          <Text style={styles.boardInstructions}>
+          Set your dot pattern and submit to play.
+          </Text>
+          <View>
+            {rows}
+          </View>
+        </View>
+      );
   }
 }
 

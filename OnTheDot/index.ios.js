@@ -55,7 +55,7 @@ class OnTheDot extends Component {
   getRandomPeer() {
     var allPeers = MultipeerConnectivity.getAllPeers();
     if(allPeers) {
-      randIndex = Math.floor(Math.random * allPeers.length);
+      var randIndex = Math.floor(Math.random * allPeers.length);
       this.setState({
         randPeer: allPeers[randIndex]
       });

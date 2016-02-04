@@ -26,10 +26,10 @@ class GameView extends Component {
     MultipeerConnectivity.on('data', (event) => {
       console.log('in-game data', event.data);
       if(event.data.type === 'guess') {
-        var response = this.isCorrectPath.bind(this, event.data.path);
+        var response = this.isCorrectPath.bind(this);
         var peer = this.props.peer;
         console.log('peer in data received', peer);
-        console.log('isCorrectPath response:', response);
+        console.log('isCorrectPath response:', response(event.data.path));
         MultipeerConnectivity.send(
           [peer],
           {result: response, type: 'response'}
@@ -91,7 +91,7 @@ class GameView extends Component {
   }
 
   isCorrectPath(opponentPath) {
-    matcher = new RegExp('^' + opponentPath);
+    var matcher = new RegExp('^' + opponentPath);
     if(this.props.playerPath.match(matcher)) {
       return true;
     }

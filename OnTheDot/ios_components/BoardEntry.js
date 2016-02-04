@@ -84,7 +84,7 @@ class BoardEntry extends Component {
           Your opponent is ready.
           </Text>
           <Text style={styles.boardInstructions}>
-          Set your dot pattern and submit to play.
+          {"Set your speckle pattern" + '\n' + "and submit to play!"}
           </Text>
           <View>
             {rows}
@@ -105,7 +105,7 @@ class BoardEntry extends Component {
           Your opponent is ready.
           </Text>
           <Text style={styles.boardInstructions}>
-          Set your dot pattern and submit to play.
+          {"Set your speckle pattern" + '\n' + "and submit to play!"}
           </Text>
           <View>
             {rows}

@@ -202,9 +202,11 @@ const styles = StyleSheet.create({
     top: 100
   },
   boardInstructions: {
-    bottom: 80,
-    color: '#2e2e32',
-    fontStyle: 'italic',
+    bottom: 30,
+    color: '#73737d',
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
     justifyContent: 'center'
   }

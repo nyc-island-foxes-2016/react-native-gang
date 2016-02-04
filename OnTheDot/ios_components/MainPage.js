@@ -61,10 +61,14 @@ class MainPage extends Component {
     if (!this.state.gameId) {
       return(
         <View style={styles.container}>
-          <TouchableHighlight onPress={this.swap.bind(this)}>
+          <TouchableHighlight
+              onPress={this.swap.bind(this)}
+              underlay='transparent'>
             <Text style={styles.button}>Post New Board</Text>
           </TouchableHighlight>
-          <TouchableHighlight onPress={this.getInstructions.bind(this)}>
+          <TouchableHighlight
+            onPress={this.getInstructions.bind(this)}
+            underlay='transparent'>
             <Text style={styles.button}>Instructions</Text>
           </TouchableHighlight>
           <StartGameOverlay
@@ -75,13 +79,19 @@ class MainPage extends Component {
 
     return(
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.swap.bind(this)}>
+        <TouchableHighlight
+          onPress={this.swap.bind(this)}
+          underlay='transparent'>
           <Text style={styles.button}>Post New Board</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={this.goToJoinGame.bind(this, this.state.gameId)}>
+        <TouchableHighlight
+          onPress={this.goToJoinGame.bind(this, this.state.gameId)}
+          underlay='transparent'>
           <Text style={styles.button}>Play</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={this.getInstructions.bind(this)}>
+        <TouchableHighlight
+          onPress={this.getInstructions.bind(this)}
+          underlay='transparent'>
             <Text style={styles.button}>Instructions</Text>
         </TouchableHighlight>
         <StartGameOverlay

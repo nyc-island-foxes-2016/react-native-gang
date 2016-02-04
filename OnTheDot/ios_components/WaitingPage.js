@@ -38,14 +38,15 @@ class WelcomePage extends Component {
     this.getPlayer2Joined();
     var playerPath = this.props.playerPath;
     MultipeerConnectivity.on('data', (event) => {
-      console.log('got a message:', event.data);
-      console.log('this in waiting page message:', this);
-      this.props.navigator.replace({
-      id: 'GameView',
-      atStart: false,
-      peer: event.data.peer,
-      playerPath: playerPath
-      });
+      if(!event.type) {
+        console.log('got a message:', event.data);
+        this.props.navigator.replace({
+        id: 'GameView',
+        atStart: false,
+        peer: event.data.peer,
+        playerPath: playerPath
+        });
+      }
     });
   }
 

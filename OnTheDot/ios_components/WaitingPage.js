@@ -44,9 +44,6 @@ class WelcomePage extends Component {
       if(event.data.peer) {
         peer = event.data.peer.id;
       }
-      else {
-        peer = event.data.peer;
-      }
       this.props.navigator.replace({
       id: 'GameView',
       atStart: false,

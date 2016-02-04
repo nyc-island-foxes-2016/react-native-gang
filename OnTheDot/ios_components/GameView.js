@@ -39,14 +39,14 @@ class GameView extends Component {
       else if(event.data.type === 'response') {
         var result = event.data.result;
         console.log('response', result);
-        if(result === 0){
+        if(result === false){
           this.setState({
             board: new Board(),
             letterPath: '',
             isOver: false
           });
         }
-        else if(result === 1) {
+        else if(result === true) {
           this.clickDot(row, col);
           if(this.state.letterPath.length === 4) {
             this.setState({
@@ -94,9 +94,9 @@ class GameView extends Component {
   isCorrectPath(playerPath, opponentPath) {
     var matcher = new RegExp('^' + opponentPath);
     if(playerPath.match(matcher)) {
-      return 1;
+      return true;
     }
-    return 0;
+    return false;
   }
 
   clickDot() {

@@ -63,7 +63,7 @@ class OnTheDot extends Component {
     if(randIds) {
       var randIndex = Math.floor(Math.random() * randIds.length);
       this.setState({
-        randPeer: randIds[randIndex]
+        randPeer: allPeers[randIds[randIndex]]
       });
     }
     else {

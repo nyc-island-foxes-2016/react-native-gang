@@ -159,6 +159,30 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     marginBottom: 20
   },
+  ditchPageText: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold',
+    fontFamily: 'AvenirNext-DemiBold',
+    padding: 10,
+  },
+  ditchButton: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+    justifyContent: 'center',
+    width: 200,
+    height: 50,
+    backgroundColor: 'transparent',
+    borderRadius: 20,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'white',
+    paddingTop: 15,
+    paddingBottom: 10,
+    top: 70
+  },
   boardButton: {
     color: 'white',
     fontWeight: 'bold',

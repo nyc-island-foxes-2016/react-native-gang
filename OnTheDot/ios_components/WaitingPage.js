@@ -70,16 +70,16 @@ class WelcomePage extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style = {styles.welcome}>
-            Waiting....
+          <Text style = {styles.ditchPageText}>
+            Waiting For Another Play to Join...
           </Text>
+          <Bouncing />
+        </View>
           <TouchableHighlight onPress = {this.deleteGame.bind(this)}>
-            <Text style={styles.button}>
-              Go back to start!
+            <Text style={styles.ditchButton}>
+              {"Ditch This Game"}
             </Text>
           </TouchableHighlight>
-          <Bouncing/>
-        </View>
       </View>
       );
     }

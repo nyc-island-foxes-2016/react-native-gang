@@ -6,6 +6,7 @@ import React, {
   StyleSheet,
   Text,
   TouchableHighlight,
+  ActivityIndicatorIOS,
   View
 } from 'react-native';
 import Bouncing from './Bouncing';
@@ -73,8 +74,10 @@ class WelcomePage extends Component {
           <Text style = {styles.ditchPageText}>
             Waiting For Another Player to Join...
           </Text>
-          <Bouncing />
         </View>
+          <ActivityIndicatorIOS
+            color="#D40145"
+            size="large"/>
           <TouchableHighlight
             onPress = {this.deleteGame.bind(this)}
             underlayColor='transparent'>

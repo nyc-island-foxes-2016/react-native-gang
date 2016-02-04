@@ -26,9 +26,6 @@ import MultipeerConnectivity from 'react-native-multipeer';
 import WaitingPage from './ios_components/WaitingPage';
 import styles from './ios_components/stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000'
-var POST_NEW_GAME = '/games'
-
 class OnTheDot extends Component {
 
   constructor(){

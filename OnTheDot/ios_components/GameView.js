@@ -88,7 +88,7 @@ class GameView extends Component {
     console.log('sending path to opponent: ', this.props.peer, 'path:', path);
     MultipeerConnectivity.send(
       [peer.id],
-      {path: path, type: 'guess'}
+      {path: path, type: 'guess'},
     );
   }
 

@@ -39,18 +39,21 @@ class OnTheDot extends Component {
     this.setState({
       randPeer: false
     });
-    MultipeerConnectivity.on('peerFound', (event) => this.setState({
-        randPeer: event.peer
-      })
+    MultipeerConnectivity.on('peerFound', (event) => {console.log('peer found!', event)}
     );
-    MultipeerConnectivity.on('peerLost', this.getRandomPeer.bind(this));
+    MultipeerConnectivity.on('peerLost', (event) => {
+      console.log('peer disconnected via event: ', event);
+      alert(event.peer.id + ' disconnected!');
+    });
     MultipeerConnectivity.on('invite', ((event) => {
       MultipeerConnectivity.rsvp(event.invite.id, true);
     }).bind(this));
     MultipeerConnectivity.on('peerConnected', (event) => {
       console.log('peer connected via event: ', event);
       alert(event.peer.id + ' connected!');
-
+      this.setState({
+        randPeer: event.peer
+      });
     });
     MultipeerConnectivity.browse('channel1');
     console.log('now browsing...');

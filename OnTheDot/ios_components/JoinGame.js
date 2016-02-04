@@ -100,7 +100,7 @@ class JoinGame extends Component {
         <View>
           {rows}
         </View>
-        <TouchableHighlight onPress={this.setupPlayerTwo.bind(this)}>
+        <TouchableHighlight onPress={this.swap.bind(this)}>
           <Text style={styles.boardButton}>
             Submit Board
           </Text>

@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
   },
-    overlayIntro: {
-    fontSize: 25,
+  overlayIntro: {
+    fontSize: 14,
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
     borderColor: '#81D9CD',
     borderRadius: 30,
     borderWidth: 0.5,
-    height: 400,
-    width: 300,
+    height: 300,
+    width: 280,
     opacity: 0.8,
-    padding: 25
+    padding: 15
   },
   overlayEndGame: {
     fontSize: 60,
@@ -139,6 +139,12 @@ const styles = StyleSheet.create({
   loadPageText: {
     color: 'white',
     fontSize: 40,
+    fontWeight: 'bold',
+    fontFamily: 'AvenirNext-DemiBold',
+    padding: 10,
+  },
+  loadPageX: {
+    color: 'white',
     fontWeight: 'bold'
   },
   button: {

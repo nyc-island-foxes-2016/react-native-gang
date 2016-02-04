@@ -35,16 +35,17 @@ class StartGameOverlay extends Component {
       return <View />;
     }
 
-    var instructions = "Each board consists of a grid of dots. Select dots to form your board pattern. Find nearby opponents and race to guess their pattern."
-
-
   return (
     <View style= {styles.overlay}>
       <TouchableHighlight
         onPress = {this.instructionDrop.bind(this)}
         underlayColor="white"
-        activeOpacity={0.3}>
-      <Text style={styles.overlayIntro}>{instructions}</Text>
+        activeOpacity={0.1}>
+      <Text style={styles.overlayIntro}>
+      <Text style={styles.loadPageText}>{"DOTS" + '\n'}</Text>
+      {"This game will require quick thumbs, sharp minds and new friends." + '\n\n' + "First, set your board in a secret order." + '\n\n' + "Next, link with nearby friends and solve their order before they solve yours!" + '\n\n\n'}
+      <Text style={styles.loadPageX}>{"[X]"}</Text>
+      </Text>
       </TouchableHighlight>
     </View>
     );

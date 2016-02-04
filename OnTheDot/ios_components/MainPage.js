@@ -46,13 +46,13 @@ class MainPage extends Component {
     console.log('connected to peer: ', peer.id)
     this.props.navigator.replace({
       id: 'JoinGame',
-      gameId: gameId,
       peer: peer
     });
   }
 
   render() {
-    if (this.props.randGame) {
+    console.log('randPeer in mainpage', this.props.randPeer);
+    if (this.props.randPeer) {
       return(
         <View style={styles.container}>
           <TouchableHighlight onPress={this.swap.bind(this)}>

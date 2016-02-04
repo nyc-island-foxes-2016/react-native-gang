@@ -25,9 +25,7 @@ class JoinGame extends Component {
     MultipeerConnectivity.send(
       [this.props.peer],
       {readyToStart: true},
-      function() {
-        console.log(arguments);
-      }
+      console.log('peer when sending readyToStart', this.props.peer)
     );
     console.log('sending start message to ', this.props.peer);
     this.props.navigator.replace({

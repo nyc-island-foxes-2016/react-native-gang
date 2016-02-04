@@ -10,9 +10,6 @@ import React, {
 } from 'react-native';
 import styles from './stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000'
-var POST_NEW_GAME = '/games'
-
 class LoadPage extends Component {
   constructor(props) {
     super(props);

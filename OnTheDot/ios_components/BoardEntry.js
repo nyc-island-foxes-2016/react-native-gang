@@ -30,7 +30,8 @@ class BoardEntry extends Component {
       id: 'WaitingPage',
       gameId: gameId,
       player: this.state.player,
-      peer: this.props.peer
+      peer: this.props.peer,
+      playerPath: this.state.letterPath
     });
   }
 

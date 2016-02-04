@@ -11,15 +11,11 @@ import Dot from './Dot';
 import MultipeerConnectivity from 'react-native-multipeer'
 import styles from './stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000'
-var POST_NEW_GAME = '/games'
-
 class JoinGame extends Component {
   constructor(props) {
     super(props);
     this.state = {board: new Board(), letterPath: ''};
   }
-
 
   swap() {
     MultipeerConnectivity.send(
@@ -34,30 +30,6 @@ class JoinGame extends Component {
       player: this.state.player,
       peer: this.props.peer,
       playerPath: this.state.letterPath
-    });
-  }
-
-  setupPlayerTwo() {
-    var update_url = REQUEST_URL + POST_NEW_GAME + '/' + this.props.gameId + '/accept';
-
-    fetch(update_url, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: this.props.gameId,
-        player: 'Game-' + Math.round(1e6 * Math.random()),
-        board: this.state.letterPath
-      })
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      this.setState({
-        player: responseData.player,
-        gameId: responseData.gameId
-      });
-      this.swap();
     });
   }
 

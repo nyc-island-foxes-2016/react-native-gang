@@ -24,6 +24,7 @@ class WelcomePage extends Component {
   }
 
   swap(page_name, peer) {
+    console.log('we hit swap?');
     this.props.navigator.replace({
       id: page_name,
       gameId: this.props.gameId,
@@ -33,14 +34,17 @@ class WelcomePage extends Component {
     });
   }
 
-
   componentDidMount() {
     this.getPlayer2Joined();
     MultipeerConnectivity.on('data', (event) => {
       console.log('got a message:', event.data);
-      if(event.data) {
-        this.swap.bind(this, 'GameView', event.data.peer.id);
-      }
+      console.log('this in waiting page message:', this);
+
+      this.props.navigator.replace({
+      id: 'GameView',
+      atStart: false,
+      peer: event.data.peer.id
+      });
     });
   }
 

@@ -12,9 +12,6 @@ import EndGame from './EndGame';
 import MultipeerConnectivity from 'react-native-multipeer';
 import styles from './stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000';
-var POST_NEW_GAME = '/games';
-
 class GameView extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +23,6 @@ class GameView extends Component {
   }
 
   componentDidMount() {
-    this.checkGameExists();
     MultipeerConnectivity.on('data', (event) => {
       console.log('in-game data', event.data);
       if(event.data.type === 'guess') {
@@ -34,11 +30,35 @@ class GameView extends Component {
         console.log('isCorrectPath response:', response);
         MultipeerConnectivity.send(
           [this.props.peer],
-          {data: response, type: 'response'}
+          {result: response, type: 'response'}
         );
       }
       else if(event.data.type === 'response') {
-        console.log('response', response);
+        var result = event.data.result;
+        console.log('response', result);
+        if(result === false){
+          this.setState({
+            board: new Board(),
+            letterPath: '',
+            isOver: false
+          });
+        }
+        else if(result === true) {
+          this.clickDot(row, col);
+          if(this.state.letterPath.length === 4) {
+            this.setState({
+              isOver: true,
+              result: 'You Win!'
+            });
+            this.setGameOver();
+          }
+        }
+      }
+      else if(event.data.type === 'gameover') {
+        this.setState({
+          isOver: true,
+          result: 'You lose.'
+        });
       }
     });
   }
@@ -70,100 +90,19 @@ class GameView extends Component {
     if(this.state.board.isClicked(row, col)) {
       return;
     }
-    clearTimeout(this.state.timeoutId);
 
     this.setState({
       board: this.state.board.mark(row, col),
       letterPath: this.state.letterPath,
-    });
-  }
-
-  checkGameExists() {
-    fetch(REQUEST_URL + '/games/' + this.props.gameId + '/playing')
-    .then((response) => response.json())
-    .then((responseData) => {
-      if(responseData.result == true){
-        var timeoutId = setTimeout(() => {
-          this.checkGameExists();
-        }, 10);
-        this.setState({
-          timeoutId: timeoutId,
-          board: this.state.board,
-          letterPath: this.state.letterPath
-        });
-      }
-      else {
-        clearTimeout(this.state.timeoutId);
-        if(this.state.isOver === false){
-          this.setState({
-            isOver: true,
-            result: 'You lose.'
-          });
-        }
-      }
-    });
-  }
-
-  attemptPath(row: number, col: number, letter: char) {
-
-    var update_url = REQUEST_URL + POST_NEW_GAME + '/' + this.props.gameId + '/attempt';
-
-    var attemptLetterPath = this.state.letterPath + letter
-    console.log('this', this);
-    console.log('attemptLetterPath', attemptLetterPath);
-    this.sendPathGuess.bind(this, attemptLetterPath);
-
-    this.setState({
-      board: this.state.board,
-      letterPath: attemptLetterPath
-    })
-
-    fetch(update_url, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: this.props.gameId,
-        player: this.props.player,
-        board: this.state.letterPath
-      })
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      if(responseData.result === 'No'){
-        this.checkGameExists();
-        this.setState({
-          board: new Board(),
-          letterPath: '',
-          timeoutId: this.state.timeoutId
-        });
-      }
-      else if(this.state.letterPath.length === 4) {
-        clearTimeout(this.state.timeoutId);
-        this.setState({
-          isOver: true,
-          result: 'You Win!'
-        });
-        this.setGameOver();
-      }
-      else {
-        this.clickDot(row, col);
-        this.checkGameExists();
-      }
+      isOver: false
     });
   }
 
   setGameOver() {
-    fetch(REQUEST_URL + '/games/' + this.props.gameId + '/gameover', {
-      method: 'PATCH',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'}
-    }).then((response) => response.json())
-    .then((responseData) => {
-      console.log('#gameover request response:', responseData);
-    }).done();
+    MultipeerConnectivity.send(
+      [this.props.peer],
+      {type: 'gameover'}
+    );
   }
 
   render() {

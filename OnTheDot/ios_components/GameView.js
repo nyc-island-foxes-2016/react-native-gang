@@ -32,8 +32,9 @@ class GameView extends Component {
         console.log('playerPath in data listener', this.props.playerPath);
         console.log('peer in data received', peer);
         console.log('isCorrectPath response:', result);
+
         MultipeerConnectivity.send(
-          [peer],
+          [peer.id],
           {result: result, type: 'response'},
           function() {console.log('sending response')}
         );
@@ -41,14 +42,14 @@ class GameView extends Component {
       else if(event.data.type === 'response') {
         var result = event.data.result;
         console.log('response', result);
-        if(result === false){
+        if(result === 'false'){
           this.setState({
             board: new Board(),
             letterPath: '',
             isOver: false
           });
         }
-        else if(result === true) {
+        else if(result === 'true') {
           this.clickDot();
           if(this.state.letterPath.length === 4) {
             this.setState({
@@ -96,9 +97,9 @@ class GameView extends Component {
   isCorrectPath(playerPath, opponentPath) {
     var matcher = new RegExp('^' + opponentPath);
     if(playerPath.match(matcher)) {
-      return true;
+      return 'true';
     }
-    return false;
+    return 'false';
   }
 
   clickDot() {

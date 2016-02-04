@@ -40,14 +40,10 @@ class WelcomePage extends Component {
     MultipeerConnectivity.on('data', (event) => {
       console.log('got a message:', event.data);
       console.log('this in waiting page message:', this);
-      var peer;
-      if(event.data.peer) {
-        peer = event.data.peer.id;
-      }
       this.props.navigator.replace({
       id: 'GameView',
       atStart: false,
-      peer: peer,
+      peer: event.data.peer,
       playerPath: playerPath
       });
     });

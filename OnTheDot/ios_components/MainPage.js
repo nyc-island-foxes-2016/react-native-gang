@@ -12,27 +12,12 @@ import MultipeerConnectivity from 'react-native-multipeer';
 import StartGameOverlay from './Instructions';
 import styles from './stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000';
-var POST_NEW_GAME = '/games';
-
 class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       gameId: 0
     };
-  }
-
-  getWaitingGames() {
-    fetch(REQUEST_URL + '/games/waiting')
-      .then((response) => response.json())
-      .then((responseData) => {
-      if(responseData){
-        this.setState({
-          gameId: responseData[0]
-        });
-      }
-    }).done();
   }
 
   swap() {

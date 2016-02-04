@@ -29,7 +29,7 @@ class JoinGame extends Component {
         console.log(arguments);
       }
     );
-    console.log('sending start message to ', peer);
+    console.log('sending start message to ', this.props.peer);
     this.props.navigator.replace({
       id: 'GameView',
       gameId: this.state.gameId,

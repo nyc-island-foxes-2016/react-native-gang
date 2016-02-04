@@ -24,7 +24,7 @@ class BoardEntry extends Component {
   }
 
   swap(gameId) {
-      MultipeerConnectivity.advertise('channel1', {name: 'User-' + Math.round(Math.random() * 1e6)});
+    MultipeerConnectivity.advertise('channel1', {name: 'User-' + Math.round(Math.random() * 1e6)});
     console.log('now advertising...');
     this.props.navigator.replace({
       id: 'WaitingPage',
@@ -90,7 +90,7 @@ class BoardEntry extends Component {
         <View>
           {rows}
         </View>
-        <TouchableHighlight onPress={this.postNewGame.bind(this)}>
+        <TouchableHighlight onPress={this.swap.bind(this, 'junk')}>
           <Text style={styles.boardButton}>
             Submit Board
           </Text>

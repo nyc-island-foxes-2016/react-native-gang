@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'AvenirNext-DemiBold',
     padding: 10,
+    bottom: 30
   },
   ditchButton: {
     color: 'white',
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     paddingTop: 15,
     paddingBottom: 10,
-    top: 40
+    top: 100
   },
   boardButton: {
     color: 'white',

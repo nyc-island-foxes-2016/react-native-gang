@@ -51,7 +51,11 @@ class GameView extends Component {
   }
 
   sendPathGuess(path) {
-    MultipeerConnectivity.send({data: path, type: 'guess'});
+    console.log('sending path to opponent:', path);
+    MultipeerConnectivity.send(
+      [this.props.peer],
+      {data: path, type: 'guess'}
+    );
   }
 
   isCorrectPath(opponentPath) {
@@ -63,8 +67,6 @@ class GameView extends Component {
   }
 
   clickDot(row: number, col: number) {
-    sendPathGuess.bind(this, this.state.letterPath);
-
     if(this.state.board.isClicked(row, col)) {
       return;
     }
@@ -107,6 +109,9 @@ class GameView extends Component {
     var update_url = REQUEST_URL + POST_NEW_GAME + '/' + this.props.gameId + '/attempt';
 
     var attemptLetterPath = this.state.letterPath + letter
+    console.log('this', this);
+    console.log('attemptLetterPath', attemptLetterPath);
+    this.sendPathGuess.bind(this, attemptLetterPath);
 
     this.setState({
       board: this.state.board,

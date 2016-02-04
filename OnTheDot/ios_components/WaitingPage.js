@@ -9,6 +9,7 @@ import React, {
   View
 } from 'react-native';
 import Bouncing from './Bouncing';
+import MultipeerConnectivity from 'react-native-multipeer';
 import styles from './stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
@@ -22,18 +23,23 @@ class WelcomePage extends Component {
     super(props);
   }
 
-  swap(page_name) {
+  swap(page_name, peer) {
     this.props.navigator.replace({
       id: page_name,
       gameId: this.props.gameId,
       player: this.props.player,
-      atStart: false
+      atStart: false,
+      peer: peer
     });
   }
 
 
   componentDidMount() {
     this.getPlayer2Joined();
+    MultipeerConnectivity.on('peerConnected', (event) => {
+      console.log('peer connected to your game:', event);
+      swap('GameView', event.peer.id);
+    });
   }
 
   getPlayer2Joined() {

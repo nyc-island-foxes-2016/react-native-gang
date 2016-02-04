@@ -47,6 +47,7 @@ class OnTheDot extends Component {
     MultipeerConnectivity.on('peerConnected', (event) => {
       console.log('peer connected via event: ', event);
       alert(event.peer.id + ' connected!');
+
     });
     MultipeerConnectivity.browse('channel1');
     console.log('now browsing...');
@@ -119,7 +120,8 @@ class OnTheDot extends Component {
         <GameView
           navigator={navigator}
           gameId={gameId}
-          player={player}/>
+          player={player}
+          peer={peer}/>
       );
     }
   }

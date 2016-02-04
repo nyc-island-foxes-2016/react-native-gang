@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 40,
     fontWeight: 'bold',
-    fontFamily: 'AvenirNext-DemiBold',
+    fontFamily: 'Futura',
     padding: 10,
   },
   loadPageX: {
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     paddingTop: 15,
     paddingBottom: 10,
-    top: 70
+    top: 40
   },
   boardButton: {
     color: 'white',

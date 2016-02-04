@@ -71,7 +71,7 @@ class WelcomePage extends Component {
       <View style={styles.container}>
         <View>
           <Text style = {styles.ditchPageText}>
-            Waiting For Another Play to Join...
+            Waiting For Another Player to Join...
           </Text>
           <Bouncing />
         </View>

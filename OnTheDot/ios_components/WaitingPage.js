@@ -36,9 +36,11 @@ class WelcomePage extends Component {
 
   componentDidMount() {
     this.getPlayer2Joined();
-    MultipeerConnectivity.on('peerConnected', (event) => {
-      console.log('peer connected to your game:', event);
-      this.swap.bind(this, 'GameView', event.peer.id);
+    MultipeerConnectivity.on('data', (event) => {
+      console.log('got a message:', event.data);
+      if(event.data) {
+        this.swap.bind(this, 'GameView', event.peer.id);
+      }
     });
   }
 

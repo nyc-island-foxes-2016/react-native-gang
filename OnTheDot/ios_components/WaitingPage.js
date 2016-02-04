@@ -39,7 +39,7 @@ class WelcomePage extends Component {
     MultipeerConnectivity.on('data', (event) => {
       console.log('got a message:', event.data);
       if(event.data) {
-        this.swap.bind(this, 'GameView', event.peer.id);
+        this.swap.bind(this, 'GameView', event.data.peer.id);
       }
     });
   }

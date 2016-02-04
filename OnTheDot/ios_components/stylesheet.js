@@ -209,6 +209,32 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
     justifyContent: 'center'
+  },
+  topBanner: {
+    bottom: 180,
+    width: 400,
+    height: 75,
+    backgroundColor: '#c7c7cb',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  topBannerText: {
+    color: '#fff',
+    top: 20,
+    fontFamily: 'Futura'
+  },
+  bottomBanner: {
+    top: 165,
+    width: 400,
+    height: 30,
+    backgroundColor: '#c7c7cb',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  bottomBannerText: {
+    color: '#fff',
+    fontFamily: 'Futura',
+    bottom: 2
   }
 });
 

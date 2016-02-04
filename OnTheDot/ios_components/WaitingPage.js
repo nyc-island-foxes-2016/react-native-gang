@@ -12,10 +12,6 @@ import Bouncing from './Bouncing';
 import MultipeerConnectivity from 'react-native-multipeer';
 import styles from './stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000'
-var GET_CURRENT_GAME = '/games/'
-var GET_IF_JOINED = '/joined'
-
 //destroy route to close game board and return to home - use swap to change nav to main page
 
 class WelcomePage extends Component {
@@ -35,7 +31,6 @@ class WelcomePage extends Component {
   }
 
   componentDidMount() {
-    this.getPlayer2Joined();
     var playerPath = this.props.playerPath;
     MultipeerConnectivity.on('data', (event) => {
       if(!event.type) {

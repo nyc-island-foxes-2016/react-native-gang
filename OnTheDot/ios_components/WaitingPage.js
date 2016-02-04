@@ -50,33 +50,8 @@ class WelcomePage extends Component {
     });
   }
 
-  getPlayer2Joined() {
-    fetch(REQUEST_URL + GET_CURRENT_GAME + this.props.gameId + GET_IF_JOINED)
-      .then((response) => response.json())
-      .then((responseText) => {
-        if(responseText.result === "Yes"){
-          this.swap('GameView');
-        }
-        else {
-          setTimeout(() => {
-            this.getPlayer2Joined();
-            }, 10);
-        }
-      });
-    }
-
   deleteGame() {
-    fetch(REQUEST_URL + GET_CURRENT_GAME + this.props.gameId, {
-      method: "DELETE",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'}
-    }).then((response) => response.json())
-      .then((responseText) => {
-        if(responseText.result === "Yes"){
-          this.swap('MainPage');
-        }
-      });
+    console.log('#deleteGame');
   }
 
   render() {

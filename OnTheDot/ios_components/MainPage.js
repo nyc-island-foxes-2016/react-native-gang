@@ -42,8 +42,8 @@ class MainPage extends Component {
   }
 
   goToJoinGame(peer) {
-    MultipeerConnectivity.invite(peer.id);
-    console.log('connected to peer: ', peer.id)
+    MultipeerConnectivity.invite(peer);
+    console.log('connected to peer from mainpage: ', peer)
     this.props.navigator.replace({
       id: 'JoinGame',
       peer: peer

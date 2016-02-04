@@ -39,7 +39,10 @@ class OnTheDot extends Component {
     this.setState({
       randPeer: false
     });
-    MultipeerConnectivity.on('peerFound', this.getRandomPeer.bind(this));
+    MultipeerConnectivity.on('peerFound', (event) => this.setState({
+        randPeer: event.peer
+      })
+    );
     MultipeerConnectivity.on('peerLost', this.getRandomPeer.bind(this));
     MultipeerConnectivity.on('invite', ((event) => {
       MultipeerConnectivity.rsvp(event.invite.id, true);
@@ -124,7 +127,7 @@ class OnTheDot extends Component {
           navigator={navigator}
           gameId={gameId}
           player={player}
-          peer={peer}
+          peer={this.state.randPeer}
           playerPath={playerPath}/>
       );
     }

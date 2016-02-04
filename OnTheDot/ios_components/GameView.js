@@ -20,6 +20,7 @@ class GameView extends Component {
       letterPath: '',
       isOver: false
     };
+    console.log('props in gameview', props);
   }
 
   componentDidMount() {

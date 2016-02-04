@@ -9,6 +9,7 @@ import React, {
 import Board from './Board';
 import Dot from './Dot';
 import EndGame from './EndGame';
+import MultipeerConnectivity from 'react-native-multipeer';
 import styles from './stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000';
@@ -26,6 +27,17 @@ class GameView extends Component {
 
   componentDidMount() {
     this.checkGameExists();
+    MultipeerConnectivity.on('data', (event) => {
+      console.log('in-game data', event.data);
+      if(event.data.type === 'guess') {
+        var response = this.isCorrectPath.bind(this, event.data.path);
+        console.log('isCorrectPath response:', response);
+        MultipeerConnectivity.send({data: response, type: 'response'});
+      }
+      else if(event.data.type === 'response') {
+        console.log('response', response);
+      }
+    });
   }
 
   swap() {
@@ -35,7 +47,21 @@ class GameView extends Component {
     });
   }
 
+  sendPathGuess(path) {
+    MultipeerConnectivity.send({data: path, type: 'guess'});
+  }
+
+  isCorrectPath(opponentPath) {
+    matcher = new RegExp('^' + opponentPath);
+    if(this.state.letterPath.match(matcher)) {
+      return true;
+    }
+    return false;
+  }
+
   clickDot(row: number, col: number) {
+    sendPathGuess.bind(this, this.state.letterPath);
+
     if(this.state.board.isClicked(row, col)) {
       return;
     }

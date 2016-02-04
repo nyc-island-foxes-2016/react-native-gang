@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     top: 100
   },
   boardInstructions: {
-    bottom: 30,
+    bottom: 70,
     color: '#73737d',
     fontSize: 20,
     fontWeight: 'bold',

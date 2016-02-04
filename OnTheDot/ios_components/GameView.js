@@ -70,15 +70,16 @@ class GameView extends Component {
     });
   }
 
-  sendPathGuess(path, row: number, col: number) {
-    console.log('sending path to opponent:', path);
+  sendPathGuess(row: number, col: number, letter: char) {
     this.setState({
       board: this.state.board,
-      letterPath: this.state.letterPath,
+      letterPath: this.state.letterPath + letter,
       isOver: this.state.isOver,
       guessRow: row,
       guessCol: col
     });
+    var path = this.state.letterPath;
+    console.log('sending path to opponent: ', this.props.peer, 'path:', path);
     MultipeerConnectivity.send(
       [this.props.peer],
       {data: path, type: 'guess'}

@@ -79,6 +79,7 @@ class OnTheDot extends Component {
     var player = route.player;
     var atStart = route.atStart;
     var peer = route.peer;
+    var playerPath = route.playerPath;
     // have a state here set to true
 
     if(routeId === 'LoadPage') {
@@ -103,7 +104,8 @@ class OnTheDot extends Component {
         <JoinGame
           navigator={navigator}
           gameId={gameId}
-          peer={peer}/>
+          peer={peer}
+          playerPath={playerPath}/>
       );
     }
     else if(routeId === 'WaitingPage'){
@@ -112,7 +114,8 @@ class OnTheDot extends Component {
         navigator={navigator}
         gameId = {gameId}
         player = {player}
-        peer = {peer}/>
+        peer = {peer}
+        playerPath={playerPath}/>
         );
     }
     else if(routeId === 'GameView') {
@@ -121,7 +124,8 @@ class OnTheDot extends Component {
           navigator={navigator}
           gameId={gameId}
           player={player}
-          peer={peer}/>
+          peer={peer}
+          playerPath={playerPath}/>
       );
     }
   }

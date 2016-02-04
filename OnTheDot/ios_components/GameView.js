@@ -27,9 +27,11 @@ class GameView extends Component {
       console.log('in-game data', event.data);
       if(event.data.type === 'guess') {
         var response = this.isCorrectPath.bind(this, event.data.path);
+        var peer = this.props.peer;
+        console.log('peer in data received', peer);
         console.log('isCorrectPath response:', response);
         MultipeerConnectivity.send(
-          [this.props.peer],
+          [peer],
           {result: response, type: 'response'}
         );
       }
@@ -79,9 +81,11 @@ class GameView extends Component {
       guessCol: col
     });
     var path = this.state.letterPath;
+    var peer = this.props.peer;
+    console.log('peer in sendPathGuess', peer);
     console.log('sending path to opponent: ', this.props.peer, 'path:', path);
     MultipeerConnectivity.send(
-      [this.props.peer],
+      [peer],
       {data: path, type: 'guess'}
     );
   }
@@ -109,8 +113,10 @@ class GameView extends Component {
   }
 
   setGameOver() {
+    var peer = this.props.peer;
+    console.log('peer in setGameOver', peer);
     MultipeerConnectivity.send(
-      [this.props.peer],
+      [peer],
       {type: 'gameover'}
     );
   }

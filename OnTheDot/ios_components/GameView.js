@@ -15,15 +15,15 @@ import styles from './stylesheet';
 class GameView extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      board: new Board(),
+      letterPath: '',
+      isOver: false
+    };
     console.log('props in gameview', props);
   }
 
   componentDidMount() {
-    this.setState({
-      board: new Board(),
-      letterPath: '',
-      isOver: false
-    });
     MultipeerConnectivity.on('data', (event) => {
       console.log('in-game data', event.data);
       if(event.data.type === 'guess') {
@@ -123,7 +123,7 @@ class GameView extends Component {
   }
 
   render() {
-    if(this.state && this.state.isOver) {
+    if(this.state.isOver) {
       var dotColor = 'clickedDot';
       if(this.state.result === 'You Win!') {
         dotColor = 'winDot';

@@ -33,8 +33,9 @@ class GameView extends Component {
         console.log('peer in data received', peer);
         console.log('isCorrectPath response:', result);
         MultipeerConnectivity.send(
-          [peer.id],
-          {result: result, type: 'response'}
+          [peer],
+          {result: result, type: 'response'},
+          function() {console.log('sending response')}
         );
       }
       else if(event.data.type === 'response') {

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   dragDot: {
     backgroundColor: '#3CC',
-    borderColor: '#4DD'
+    borderColor: '#3CC'
   },
   row: {
     flexDirection: 'row',
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
   },
-    overlayIntro: {
-    fontSize: 25,
+  overlayIntro: {
+    fontSize: 14,
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
@@ -99,26 +99,18 @@ const styles = StyleSheet.create({
     borderColor: '#81D9CD',
     borderRadius: 30,
     borderWidth: 0.5,
-    height: 400,
-    width: 300,
+    height: 300,
+    width: 280,
     opacity: 0.8,
-    padding: 25
+    padding: 15
   },
   overlayEndGame: {
-    fontSize: 60,
-    marginBottom: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    fontSize: 50,
+    bottom: 100,
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
-    backgroundColor:'#81D9CD',
     overflow: 'hidden',
-    borderColor: '#81D9CD',
-    borderRadius: 30,
-    borderWidth: 0.5,
-    height: 200,
-    width: 300,
-    opacity: 0.8,
+    color: '#000'
   },
   newGame: {
     backgroundColor: '#887766',
@@ -139,7 +131,16 @@ const styles = StyleSheet.create({
   loadPageText: {
     color: 'white',
     fontSize: 40,
+    fontWeight: 'bold',
+    fontFamily: 'Futura',
+    padding: 10,
+  },
+  loadPageX: {
+    color: 'white',
     fontWeight: 'bold'
+  },
+  tops: {
+    top: 180
   },
   button: {
     color: 'white',
@@ -157,6 +158,30 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'white',
     marginBottom: 20
+  },
+  ditchPageText: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold',
+    fontFamily: 'AvenirNext-DemiBold',
+    padding: 10,
+  },
+  ditchButton: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+    justifyContent: 'center',
+    width: 200,
+    height: 50,
+    backgroundColor: 'transparent',
+    borderRadius: 20,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'white',
+    paddingTop: 15,
+    paddingBottom: 10,
+    top: 40
   },
   boardButton: {
     color: 'white',

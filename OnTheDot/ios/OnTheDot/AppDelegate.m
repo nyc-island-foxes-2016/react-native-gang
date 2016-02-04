@@ -17,9 +17,9 @@
 {
   NSURL *jsCodeLocation;
 
-  /**
-   * Loading JavaScript code - uncomment the one you want.
-   *
+  
+/**
+    *
    * OPTION 1
    * Load from development server. Start the server from the repository root:
    *
@@ -31,7 +31,7 @@
    * on the same Wi-Fi network.
    */
 
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+  jsCodeLocation = [NSURL URLWithString:@"http://10.0.2.108:8081/index.ios.bundle?platform=ios&dev=true"];
 
   /**
    * OPTION 2

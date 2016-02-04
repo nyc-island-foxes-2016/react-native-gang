@@ -43,7 +43,7 @@ class LoadPage extends Component {
     return(
       <View style={styles.loadPage}>
         <TouchableHighlight onPress={this.swap.bind(this)}>
-          <Text style={styles.loadPageText}>DOTS</Text>
+          <Text style={styles.loadPageText}>SPECKLES</Text>
         </TouchableHighlight>
       </View>
     );

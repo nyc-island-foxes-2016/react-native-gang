@@ -14,9 +14,6 @@ import Dot from './Dot';
 import MultipeerConnectivity from 'react-native-multipeer';
 import styles from './stylesheet';
 
-var REQUEST_URL = 'http://localhost:3000'
-var POST_NEW_GAME = '/games'
-
 class BoardEntry extends Component {
   constructor(props) {
     super(props);
@@ -32,26 +29,6 @@ class BoardEntry extends Component {
       player: this.state.player,
       peer: this.props.peer,
       playerPath: this.state.letterPath
-    });
-  }
-
-  postNewGame() {
-    fetch(REQUEST_URL + POST_NEW_GAME, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          player: 'Game-' + Math.round(1e6 * Math.random()),
-          board: this.state.letterPath
-        })
-      })
-    .then((response) => response.json())
-    .then((responseData) => {
-      this.setState({
-        player: responseData.player
-      })
-      this.swap(responseData.gameId);
     });
   }
 

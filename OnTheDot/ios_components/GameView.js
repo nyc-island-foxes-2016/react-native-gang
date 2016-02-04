@@ -56,7 +56,7 @@ class GameView extends Component {
 
   isCorrectPath(opponentPath) {
     matcher = new RegExp('^' + opponentPath);
-    if(this.state.letterPath.match(matcher)) {
+    if(this.props.playerPath.match(matcher)) {
       return true;
     }
     return false;

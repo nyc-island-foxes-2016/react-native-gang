@@ -70,8 +70,15 @@ class GameView extends Component {
     });
   }
 
-  sendPathGuess(path) {
+  sendPathGuess(path, row: number, col: number) {
     console.log('sending path to opponent:', path);
+    this.setState({
+      board: this.state.board,
+      letterPath: this.state.letterPath,
+      isOver: this.state.isOver,
+      guessRow: row,
+      guessCol: col
+    });
     MultipeerConnectivity.send(
       [this.props.peer],
       {data: path, type: 'guess'}
@@ -86,7 +93,9 @@ class GameView extends Component {
     return false;
   }
 
-  clickDot(row: number, col: number) {
+  clickDot() {
+    var row = this.state.guessRow;
+    var col = this.state.guessCol;
     if(this.state.board.isClicked(row, col)) {
       return;
     }
@@ -133,7 +142,7 @@ class GameView extends Component {
             <Dot
               key={col}
               clicked={clicked}
-              onPress={this.attemptPath.bind(this, row, col, letterSet.pop())}/>
+              onPress={this.sendPathGuess.bind(this, row, col, letterSet.pop())}/>
           )}
         </View>
       );

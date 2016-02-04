@@ -32,8 +32,8 @@ class GameView extends Component {
         console.log('peer in data received', peer);
         console.log('isCorrectPath response:', result);
         MultipeerConnectivity.send(
-          [peer.id],
-          {result: result, type: 'response'}
+          {result: result, type: 'response'},
+          [peer.id]
         );
       }
       else if(event.data.type === 'response') {
@@ -86,8 +86,8 @@ class GameView extends Component {
     console.log('peer in sendPathGuess', peer);
     console.log('sending path to opponent: ', this.props.peer, 'path:', path);
     MultipeerConnectivity.send(
-      [peer.id],
-      {data: path, type: 'guess'}
+      {data: path, type: 'guess'},
+      [peer.id]
     );
   }
 
@@ -117,8 +117,8 @@ class GameView extends Component {
     var peer = this.props.peer;
     console.log('peer in setGameOver', peer);
     MultipeerConnectivity.send(
-      [peer.id],
-      {type: 'gameover'}
+      {type: 'gameover'},
+      [peer.id]
     );
   }
 

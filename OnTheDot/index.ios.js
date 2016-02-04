@@ -39,8 +39,10 @@ class OnTheDot extends Component {
     this.setState({
       randPeer: false
     });
-    MultipeerConnectivity.on('peerFound', (event) => {console.log('peer found!', event)}
-    );
+    MultipeerConnectivity.on('peerFound', (event) => {
+      this.getRandomPeer();
+      console.log('peer found!', event);
+    });
     MultipeerConnectivity.on('peerLost', (event) => {
       console.log('peer disconnected via event: ', event);
       alert(event.peer.id + ' disconnected!');

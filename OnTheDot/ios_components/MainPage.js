@@ -20,7 +20,7 @@ class MainPage extends Component {
     this.state = {gameId: 0}
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getWaitingGames();
   }
 
@@ -42,6 +42,13 @@ class MainPage extends Component {
       });
   }
 
+  getInstructions() {
+      this.props.navigator.replace({
+        id: 'MainPage',
+        atStart: true
+      });
+  }
+
   goToJoinGame(gameId) {
     this.props.navigator.replace({
       id: 'JoinGame',
@@ -50,11 +57,15 @@ class MainPage extends Component {
   }
 
   render() {
+
     if (!this.state.gameId) {
       return(
         <View style={styles.container}>
           <TouchableHighlight onPress={this.swap.bind(this)}>
             <Text style={styles.button}>Post New Board</Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.getInstructions.bind(this)}>
+            <Text style={styles.button}>Instructions</Text>
           </TouchableHighlight>
           <StartGameOverlay
             atStart = {this.props.atStart}/>
@@ -69,6 +80,9 @@ class MainPage extends Component {
         </TouchableHighlight>
         <TouchableHighlight onPress={this.goToJoinGame.bind(this, this.state.gameId)}>
           <Text style={styles.button}>Play</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.getInstructions.bind(this)}>
+            <Text style={styles.button}>Instructions</Text>
         </TouchableHighlight>
         <StartGameOverlay
           atStart = {this.props.atStart}/>

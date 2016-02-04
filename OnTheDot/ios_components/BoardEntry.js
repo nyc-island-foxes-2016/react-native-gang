@@ -89,7 +89,9 @@ class BoardEntry extends Component {
           <View>
             {rows}
           </View>
-          <TouchableHighlight onPress={this.postNewGame.bind(this)}>
+          <TouchableHighlight
+            onPress={this.postNewGame.bind(this)}
+            underlayColor='transparent'>
             <Text style={styles.boardButton}>
               Submit Board
             </Text>
@@ -108,6 +110,12 @@ class BoardEntry extends Component {
           <View>
             {rows}
           </View>
+          <TouchableHighlight
+            underlayColor='transparent'>
+            <Text style={styles.boardButton}>
+              Submit Board
+            </Text>
+          </TouchableHighlight>
         </View>
       );
   }

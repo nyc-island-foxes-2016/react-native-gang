@@ -75,7 +75,9 @@ class WelcomePage extends Component {
           </Text>
           <Bouncing />
         </View>
-          <TouchableHighlight onPress = {this.deleteGame.bind(this)}>
+          <TouchableHighlight
+            onPress = {this.deleteGame.bind(this)}
+            underlayColor='transparent'>
             <Text style={styles.ditchButton}>
               {"Ditch This Game"}
             </Text>

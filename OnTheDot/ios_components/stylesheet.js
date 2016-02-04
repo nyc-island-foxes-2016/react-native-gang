@@ -105,20 +105,12 @@ const styles = StyleSheet.create({
     padding: 15
   },
   overlayEndGame: {
-    fontSize: 60,
-    marginBottom: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    fontSize: 50,
+    bottom: 100,
     fontFamily: 'AvenirNext-DemiBold',
     textAlign: 'center',
-    backgroundColor:'#81D9CD',
     overflow: 'hidden',
-    borderColor: '#81D9CD',
-    borderRadius: 30,
-    borderWidth: 0.5,
-    height: 200,
-    width: 300,
-    opacity: 0.8,
+    color: '#000'
   },
   newGame: {
     backgroundColor: '#887766',
@@ -146,6 +138,9 @@ const styles = StyleSheet.create({
   loadPageX: {
     color: 'white',
     fontWeight: 'bold'
+  },
+  tops: {
+    top: 180
   },
   button: {
     color: 'white',

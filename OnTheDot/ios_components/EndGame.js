@@ -16,11 +16,21 @@ class EndGame extends Component {
         <View style={styles.overlay}>
         <TouchableHighlight
           onPress={this.props.onSwap}
-          activeOpacity={0.2}>
+          underlayColor='transparent'>
           <Text style={styles.overlayEndGame}>
             {this.props.result}
           </Text>
         </TouchableHighlight>
+        <View style={styles.overlay}>
+        <TouchableHighlight
+          style={styles.tops}
+          onPress={this.props.onSwap}
+          underlayColor='transparent'>
+          <Text style={styles.button}>
+            Play Again!
+          </Text>
+        </TouchableHighlight>
+        </View>
         </View>
       );
     }

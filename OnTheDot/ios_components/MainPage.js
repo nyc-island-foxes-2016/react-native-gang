@@ -58,6 +58,10 @@ class MainPage extends Component {
 
   render() {
 
+    const titleConfig = {
+      title: 'Hello, world',
+    };
+
     if (!this.state.gameId) {
       return(
         <View style={styles.container}>
@@ -79,6 +83,9 @@ class MainPage extends Component {
 
     return(
       <View style={styles.container}>
+        <View style={styles.header}>
+        <Text style={styles.headerText}>SPECKLES</Text>
+        </View>
         <TouchableHighlight
           onPress={this.swap.bind(this)}
           underlay='transparent'>
@@ -94,6 +101,9 @@ class MainPage extends Component {
           underlay='transparent'>
             <Text style={styles.button}>Instructions</Text>
         </TouchableHighlight>
+        <View style={styles.bottomBanner}>
+        <Text style={styles.bottomBannerText}>&copy; RNG</Text>
+        </View>
         <StartGameOverlay
           atStart = {this.props.atStart}/>
       </View>

@@ -42,8 +42,7 @@ class StartGameOverlay extends Component {
         underlayColor="white"
         activeOpacity={0.1}>
       <Text style={styles.overlayIntro}>
-      <Text style={styles.loadPageText}>{"SPECKLES" + '\n'}</Text>
-      {"This game will require quick thumbs, sharp minds and new friends." + '\n\n' + "First, set your board in a secret order." + '\n\n' + "Next, link with nearby friends and solve their speckle order before they solve yours!" + '\n\n\n'}
+      {'\n\n' + "This game will require quick thumbs, sharp minds and new friends." + '\n\n' + "First, set your board in a secret order." + '\n\n' + "Next, link with nearby friends and solve their speckle order before they solve yours!" + '\n\n\n'}
       <Text style={styles.loadPageX}>{"[X]"}</Text>
       </Text>
       </TouchableHighlight>

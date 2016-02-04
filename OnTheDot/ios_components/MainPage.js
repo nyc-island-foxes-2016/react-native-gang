@@ -83,8 +83,8 @@ class MainPage extends Component {
 
     return(
       <View style={styles.container}>
-        <View style={styles.topBanner}>
-        <Text style={styles.topBannerText}>SPECKLES</Text>
+        <View style={styles.header}>
+        <Text style={styles.headerText}>SPECKLES</Text>
         </View>
         <TouchableHighlight
           onPress={this.swap.bind(this)}

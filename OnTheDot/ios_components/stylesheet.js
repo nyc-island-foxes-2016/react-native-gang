@@ -10,15 +10,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#b3e8e1',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    padding: 10,
-    color: 'white',
-    borderStyle: 'solid',
-    borderColor: '#a1a1af'
-  },
   instructions: {
     textAlign: 'center',
     color: '#333333',
@@ -201,6 +192,22 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     top: 100
   },
+  hiddenButton: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    paddingTop: 8,
+    paddingBottom: 5,
+    textAlign: 'center',
+    justifyContent: 'center',
+    width: 150,
+    height: 40,
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#b3e8e1',
+    marginBottom: 20,
+    top: 100
+  },
   boardInstructions: {
     bottom: 70,
     color: '#73737d',
@@ -210,24 +217,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center'
   },
-  topBanner: {
-    bottom: 180,
-    width: 400,
-    height: 75,
-    backgroundColor: '#c7c7cb',
+  header: {
+    height: 80,
     alignItems: 'center',
-    justifyContent: 'center'
+    bottom: 70
   },
-  topBannerText: {
-    color: '#fff',
-    top: 20,
-    fontFamily: 'Futura'
+  headerText: {
+    color: '#e04d7c',
+    fontFamily: 'Futura',
+    fontSize: 50
   },
   bottomBanner: {
-    top: 165,
+    top: 100,
     width: 400,
     height: 30,
-    backgroundColor: '#c7c7cb',
     alignItems: 'center',
     justifyContent: 'center'
   },

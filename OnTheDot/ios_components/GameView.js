@@ -169,9 +169,14 @@ class GameView extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.boardInstructions}>
-        {"Decode your opponent's board" + '\n' + "before they solve yours!"}
+        {'\n' +"Decode your opponent's board" + '\n' + "before they solve yours!"}
         </Text>
           {rows}
+        <TouchableHighlight
+            underlayColor='transparent'>
+            <Text style={styles.hiddenButton}>
+            </Text>
+          </TouchableHighlight>
         <EndGame
           isOver={this.state.isOver}
           result={this.state.result}

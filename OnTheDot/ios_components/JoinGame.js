@@ -32,7 +32,8 @@ class JoinGame extends Component {
       id: 'GameView',
       gameId: this.state.gameId,
       player: this.state.player,
-      peer: this.props.peer
+      peer: this.props.peer,
+      playerPath: this.state.letterPath
     });
   }
 

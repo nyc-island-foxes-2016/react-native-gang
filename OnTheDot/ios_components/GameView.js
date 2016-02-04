@@ -32,7 +32,10 @@ class GameView extends Component {
       if(event.data.type === 'guess') {
         var response = this.isCorrectPath.bind(this, event.data.path);
         console.log('isCorrectPath response:', response);
-        MultipeerConnectivity.send({data: response, type: 'response'});
+        MultipeerConnectivity.send(
+          [this.props.peer],
+          {data: response, type: 'response'}
+        );
       }
       else if(event.data.type === 'response') {
         console.log('response', response);

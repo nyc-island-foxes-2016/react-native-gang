@@ -23,6 +23,7 @@ class JoinGame extends Component {
 
   swap() {
     MultipeerConnectivity.send(
+      [this.props.peer],
       {readyToStart: true, peer: {id: this.props.peer}},
       console.log('peer when sending readyToStart', this.props.peer)
     );

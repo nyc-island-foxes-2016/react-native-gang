@@ -11,7 +11,7 @@ import React, {
 } from 'react-native';
 import Board from './Board';
 import Dot from './Dot';
-import MultipeerConnectivity from 'MultipeerConnectivity';
+import MultipeerConnectivity from 'react-native-multipeer';
 import styles from './stylesheet';
 
 var REQUEST_URL = 'http://localhost:3000'
@@ -24,7 +24,8 @@ class BoardEntry extends Component {
   }
 
   swap(gameId) {
-    MultipeerConnectivity.advertise('channel1', {name: 'User-' + Math.round(Math.random() * 1e6)};
+      MultipeerConnectivity.advertise('channel1', {name: 'User-' + Math.round(Math.random() * 1e6)});
+    console.log('now advertising...');
     this.props.navigator.replace({
       id: 'WaitingPage',
       gameId: gameId,

@@ -8,7 +8,7 @@ import React, {
   TouchableHighlight,
   View
 } from 'react-native';
-import MultipeerConnectivity from 'MultipeerConnectivity';
+import MultipeerConnectivity from 'react-native-multipeer';
 import StartGameOverlay from './Instructions';
 import styles from './stylesheet';
 
@@ -43,6 +43,7 @@ class MainPage extends Component {
 
   goToJoinGame(peer) {
     MultipeerConnectivity.invite(peer.id);
+    console.log('connected to peer: ', peer.id)
     this.props.navigator.replace({
       id: 'JoinGame',
       gameId: gameId,

@@ -22,7 +22,7 @@ import Instructions from './ios_components/Instructions';
 import JoinGame from './ios_components/JoinGame';
 import LoadPage from './ios_components/LoadPage';
 import MainPage from './ios_components/MainPage';
-import MultipeerConnectivity from 'MultipeerConnectivity';
+import MultipeerConnectivity from 'react-native-multipeer';
 import WaitingPage from './ios_components/WaitingPage';
 import styles from './ios_components/stylesheet';
 
@@ -36,24 +36,33 @@ class OnTheDot extends Component {
   }
 
   componentDidMount() {
-    MultipeerConnectivity.on('peerFound', this._onChange);
-    MultipeerConnectivity.on('peerLost', this._onChange);
+    this.setState({
+      randPeer: false
+    });
+    MultipeerConnectivity.on('peerFound', this.getRandomPeer);
+    MultipeerConnectivity.on('peerLost', this.getRandomPeer);
     MultipeerConnectivity.on('invite', ((event) => {
       MultipeerConnectivity.rsvp(event.invite.id, true);
     }).bind(this));
     MultipeerConnectivity.on('peerConnected', (event) => {
+      console.log('peer connected via event: ', event);
       alert(event.peer.id + ' connected!');
     });
     MultipeerConnectivity.browse('channel1');
+    console.log('now browsing...');
   }
 
   getRandomPeer() {
     var allPeers = MultipeerConnectivity.getAllPeers();
     if(allPeers) {
       randIndex = Math.floor(Math.random * allPeers.length);
-      return allPeers[randIndex];
+      this.setState({
+        randPeer: allPeers[randIndex]
+      });
     }
-    return null;
+    this.setState({
+      randPeer: false
+    });
   }
 
   renderScene(route, navigator) {
@@ -73,7 +82,7 @@ class OnTheDot extends Component {
       return (
         <MainPage navigator={navigator}
           atStart = {atStart}
-          randPeer = {this.getRandomPeer()}/>
+          randPeer = {this.state.randPeer}/>
       );
     }
     else if(routeId === 'BoardEntry') {

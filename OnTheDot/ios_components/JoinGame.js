@@ -83,11 +83,7 @@ class JoinGame extends Component {
       return (
         <View style={styles.container}>
           <Text style={styles.boardInstructions}>
-          Your opponent is ready.
-          </Text>
-          <Text style={styles.boardInstructions}>
-          Set your dot pattern and submit to play.
-          </Text>
+          {"Your opponent is ready." + '\n' + "Set your speckle pattern" + '\n' + "and submit to play!"}          </Text>
           <View>
             {rows}
           </View>
@@ -104,10 +100,7 @@ class JoinGame extends Component {
       return (
         <View style={styles.container}>
           <Text style={styles.boardInstructions}>
-          Your opponent is ready.
-          </Text>
-          <Text style={styles.boardInstructions}>
-          Set your dot pattern and submit to play.
+          {"Your opponent is ready." + '\n' + "Set your speckle pattern" + '\n' + "and submit to play!"}
           </Text>
           <View>
             {rows}

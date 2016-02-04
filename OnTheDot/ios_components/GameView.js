@@ -169,10 +169,7 @@ class GameView extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.boardInstructions}>
-        {"Decode your opponent's board"}
-        </Text>
-        <Text style={styles.boardInstructions}>
-        {"before they solve yours!"}
+        {"Decode your opponent's board" + '\n' + "before they solve yours!"}
         </Text>
           {rows}
         <EndGame

@@ -35,8 +35,7 @@ class GameView extends Component {
 
         MultipeerConnectivity.send(
           [peer.id],
-          {result: result, type: 'response'},
-          function() {console.log('sending response')}
+          {result: result, type: 'response'}
         );
       }
       else if(event.data.type === 'response') {
@@ -50,7 +49,7 @@ class GameView extends Component {
           });
         }
         else if(result === 'true') {
-          this.clickDot();
+          this.clickDot(this.state.guessRow, this.state.guessCol);
           if(this.state.letterPath.length === 4) {
             this.setState({
               isOver: true,
@@ -102,9 +101,7 @@ class GameView extends Component {
     return 'false';
   }
 
-  clickDot() {
-    var row = this.state.guessRow;
-    var col = this.state.guessCol;
+  clickDot(row, col) {
     if(this.state.board.isClicked(row, col)) {
       return;
     }

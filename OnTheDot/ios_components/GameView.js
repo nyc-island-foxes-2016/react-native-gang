@@ -48,7 +48,7 @@ class GameView extends Component {
           });
         }
         else if(result === true) {
-          this.clickDot(row, col);
+          this.clickDot();
           if(this.state.letterPath.length === 4) {
             this.setState({
               isOver: true,

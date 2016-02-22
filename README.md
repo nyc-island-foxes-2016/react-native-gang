@@ -8,19 +8,24 @@ Speckles is a two-player game in which players select dots from a board in some 
 The current iteration of the game runs on React Native, and uses a rails server with a JSON API. The server holds the board position information.
 
 To run program in iOS:
-1. In Terminal, run command 
+
+In Terminal, run
   ```bash 
   git clone https://github.com/nyc-island-foxes-2016/speckles.git
-  ``` and navigate to Speckles directory on local computer.
-2. Navigate to 'rails-server' subdirectory and run commands
-  ```bash 
+  ```
+  and navigate to Speckles directory on local computer.
+
+Navigate to 'rails-server' subdirectory and run 
+```bash 
   bundle exec install
   rails s
   ```
-3. In XCode, open file '/speckles/OnTheDot/ios/OnTheDot.xcodeproj'.
-4. in XCode, select run simulation in iPhone 5 or 6.
 
-### <a href="https://trello.com/b/QN4KzHG3/icebreaker">Trello Board</a>
+In XCode, open file '/speckles/OnTheDot/ios/OnTheDot.xcodeproj'.
+
+In XCode, select run simulation in iPhone 5 or 6.
 
 Screenshot of Speckles game in iOS with instructions:
 ![Speckles Screenshio](/OnTheDot/imgs/IMG_5943.PNG)
+
+<a href="https://trello.com/b/QN4KzHG3/icebreaker">Trello Board</a>

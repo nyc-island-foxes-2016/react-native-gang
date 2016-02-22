@@ -23,13 +23,13 @@ Navigate to 'rails-server' subdirectory and run commands
   rails s
   ```
 
-In a new terminal window, navigate to 'OnTheDot' subdirectory and run
+In a new terminal window, navigate to Speckles and run
 
   ```bash
   npm install
   ```
 
-In XCode, open file '/speckles/OnTheDot/ios/OnTheDot.xcodeproj'.
+In XCode, open file '/speckles/ios/OnTheDot.xcodeproj'.
 
 In XCode, select run simulation in iPhone 5 or 6 and then select 'Build'
 

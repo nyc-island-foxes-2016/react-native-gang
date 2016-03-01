@@ -16,14 +16,16 @@ In Terminal, run command
 
   and navigate to Speckles directory on local computer.
 
+Change all instances of 'localhost' in file to computer's IP address.
+
 Navigate to 'rails-server' subdirectory and run commands
 
   ```bash
   bundle exec install
-  rails s
+  rails server -b 0.0.0.0
   ```
 
-In a new terminal window, navigate to Speckles and run
+In a new terminal window, navigate to '/speckles/OnTheDot/node_modules/' directory and run
 
   ```bash
   npm install
@@ -31,7 +33,7 @@ In a new terminal window, navigate to Speckles and run
 
 In XCode, open file '/speckles/ios/OnTheDot.xcodeproj'.
 
-In XCode, select run simulation in iPhone 5 or 6 and then select 'Build'
+In XCode, select run simulation in iPhone 5 or 6, or connect iPhone to run to your device, and then select 'Build'. The simulator will launch an instance of the game on the simulator or your phone.
 
 Screenshot of Speckles game in iOS with instructions:
 ![Speckles Screenshio](/OnTheDot/imgs/IMG_5943.PNG)

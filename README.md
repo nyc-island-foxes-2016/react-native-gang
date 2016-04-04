@@ -41,6 +41,6 @@ Change all instances of 'localhost' in file to your computer's IP address:
 In XCode, select run simulation in iPhone 5 or 6, or connect iPhone to run to your device, and then select 'Build'. The simulator will launch an instance of the game on the simulator or your phone.
 
 Screenshot of Speckles game in iOS with instructions:
-![Speckles Screenshio](/OnTheDot/imgs/IMG_5943.PNG)
+<img src="./imgs/IMG_5943.PNG" title="Speckles Screenshot"/>
 
 <a href="https://trello.com/b/QN4KzHG3/icebreaker">Trello Board</a>

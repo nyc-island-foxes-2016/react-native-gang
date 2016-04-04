@@ -9,14 +9,19 @@ The current iteration of the game runs on React Native, and uses a rails server 
 
 To run program in iOS:
 
-In Terminal, run command
+In Terminal, run the following command to clone the repository to your computer:
+
   ```bash
   git clone https://github.com/nyc-island-foxes-2016/speckles.git
   ```
 
-  and navigate to Speckles directory on local computer.
+In a new terminal window, navigate to the '/speckles' directory and run:
 
-Change all instances of 'localhost' in file to computer's IP address.
+  ```bash
+  npm install
+  ```
+
+This will install all the React Native dependencies needed to run the Rails version of the app.
 
 Navigate to 'rails-server' subdirectory and run commands
 
@@ -25,13 +30,13 @@ Navigate to 'rails-server' subdirectory and run commands
   rails server -b 0.0.0.0
   ```
 
-In a new terminal window, navigate to '/speckles/OnTheDot/node_modules/' directory and run
-
-  ```bash
-  npm install
-  ```
-
 In XCode, open file '/speckles/ios/OnTheDot.xcodeproj'.
+
+Change all instances of 'localhost' in file to your computer's IP address:
+
+* Open System Preferences -> Network
+* Select the type of internet connection you're using: Wireless, Ethernet, etc.
+* Your IP address will be four numbers separated by periods, E.G. 10.0.0.128
 
 In XCode, select run simulation in iPhone 5 or 6, or connect iPhone to run to your device, and then select 'Build'. The simulator will launch an instance of the game on the simulator or your phone.
 
